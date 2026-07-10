@@ -1,5 +1,3 @@
-import { inView, animate } from "motion";
-
 export function initLandingMotion() {
 	const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -11,7 +9,27 @@ export function initLandingMotion() {
 		return;
 	}
 
-	inView(".scroll-fade:not([data-step-id])", (element) => {
-		animate(element, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, ease: "easeOut" });
+	const observer = new IntersectionObserver(
+		(entries) => {
+			for (const entry of entries) {
+				if (entry.isIntersecting) {
+					const el = entry.target as HTMLElement;
+					if (el.hasAttribute("data-step-id")) continue;
+					el.animate(
+						[
+							{ opacity: "0", transform: "translateY(20px)" },
+							{ opacity: "1", transform: "translateY(0)" },
+						],
+						{ duration: 600, easing: "ease-out", fill: "forwards" },
+					);
+					observer.unobserve(el);
+				}
+			}
+		},
+		{ threshold: 0.15 },
+	);
+
+	document.querySelectorAll(".scroll-fade:not([data-step-id])").forEach((el) => {
+		observer.observe(el);
 	});
 }
