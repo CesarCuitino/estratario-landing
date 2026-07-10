@@ -27,9 +27,7 @@ const t = (await import("../../i18n/t")).t;
 		class="absolute inset-0 w-full h-full object-cover pointer-events-none"
 		style="opacity:0.3;"
 		aria-hidden="true"
-	>
-		<source src="/hero-bg.mp4" type="video/mp4" />
-	</video>
+	></video>
 
 	<div class="absolute inset-0 pointer-events-none" style="background:var(--page-bg); opacity:0.75;" aria-hidden="true" />
 
@@ -80,9 +78,10 @@ const t = (await import("../../i18n/t")).t;
 		if (reduce) return;
 		const video = document.getElementById("hero-bg");
 		if (!video || !(video instanceof HTMLVideoElement)) return;
-		requestAnimationFrame(() => {
+		setTimeout(() => {
+			video.src = "/hero-bg.mp4";
 			video.load();
 			video.play().catch(() => {});
-		});
+		}, 3000);
 	})();
 </script>
