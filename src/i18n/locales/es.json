@@ -54,7 +54,7 @@
 			"subtitle": "Cada documento que añades sigue un ciclo iterativo de 4 fases para <1>destilar tu conocimiento de marca</1> sin fricción."
 		},
 		"cta": {
-			"badge": "ACCESO COMPLETO AL ALPHA",
+			"badge": "ACCESO COMPLETO A V0.8.0",
 			"title": "Transforma tus reuniones de inmersión en tu <1>mayor ventaja competitiva</1>",
 			"subtitle": "Usa la plataforma como un <1>copiloto en vivo</1> durante tus sesiones de consultoría. Estructura el Core de tus clientes en tiempo real mientras validas la estrategia junto a ellos.",
 			"button": "Comienza Gratis",
@@ -116,7 +116,7 @@
 		"item6_title": "Selección inteligente",
 		"item6_desc": "Al crear un workspace, la plataforma identifica tu etapa (concept, early, growth, scale) y sugiere solo los documentos que realmente necesitas.",
 		"status_label": "Estado actual",
-		"status_desc": "La plataforma se encuentra en fase alpha. Las funcionalidades están operativas pero en evolución constante. Al donar, obtienes acceso completo por 30 días y ayudas a definir el rumbo del proyecto."
+		"status_desc": "La plataforma se encuentra en fase v0.8.0. Las funcionalidades están operativas pero en evolución constante. Al donar, obtienes acceso completo por 30 días y ayudas a definir el rumbo del proyecto."
 	},
 	"privacy": {
 		"title": "Política de Privacidad",
@@ -160,8 +160,8 @@
 		"s1_p2": "Estos términos pueden ser actualizados en cualquier momento. Los cambios serán notificados a través de la aplicación o por correo electrónico. El uso continuado del servicio después de la notificación constituye la aceptación de los cambios.",
 		"s2_title": "2. Descripción del servicio",
 		"s2_p1": "Esta aplicación es una herramienta de marketing potenciada por inteligencia artificial que te permite generar contenido, analizar datos y optimizar estrategias de marketing.",
-		"s2_alpha_label": "Estado alpha:",
-		"s2_alpha_desc": "la aplicación se encuentra en fase alpha de desarrollo. Esto significa que puede contener errores, estar sujeta a cambios significativos sin previo aviso, y no se garantiza su disponibilidad continua ni la ausencia de interrupciones. El servicio se proporciona «tal cual» y puede ser modificado o discontinuado en cualquier momento.",
+		"s2_alpha_label": "Estado v0.8.0:",
+		"s2_alpha_desc": "la aplicación se encuentra en fase v0.8.0 de desarrollo. Esto significa que puede contener errores, estar sujeta a cambios significativos sin previo aviso, y no se garantiza su disponibilidad continua ni la ausencia de interrupciones. El servicio se proporciona «tal cual» y puede ser modificado o discontinuado en cualquier momento.",
 		"s3_title": "3. Cuentas de usuario",
 		"s3_p1": "Para utilizar la aplicación debes crear una cuenta. Eres responsable de:",
 		"s3_item1": "Mantener la confidencialidad de tus credenciales de acceso.",
@@ -189,7 +189,7 @@
 		"s8_item2_b": "no están sujetas a devolución ni reembolso",
 		"s8_item2_c": "bajo ninguna circunstancia.",
 		"s8_item3": "A cambio de tu donación, recibirás acceso a funcionalidades adicionales durante 30 días, incluyendo workspaces ilimitados y acceso anticipado a nuevas funcionalidades.",
-		"s8_item4": "Dado que la aplicación se encuentra en fase alpha, no se garantiza el funcionamiento ininterrumpido ni la disponibilidad de las funcionalidades prometidas.",
+		"s8_item4": "Dado que la aplicación se encuentra en fase v0.8.0, no se garantiza el funcionamiento ininterrumpido ni la disponibilidad de las funcionalidades prometidas.",
 		"s8_item5": "El titular no está registrado como empresa ni ha iniciado actividades comerciales formales, por lo que las donaciones se realizan en carácter de apoyo personal al desarrollo del proyecto.",
 		"s9_title": "9. Privacidad",
 		"s9_p1": "El uso de tus datos personales se rige por nuestra",
@@ -203,7 +203,7 @@
 	"changelog": {
 		"title": "Changelog",
 		"subtitle": "Historial de cambios y novedades de la plataforma.",
-		"v1_version": "Alpha 1.0",
+		"v1_version": "v0.8.0",
 		"v1_date": "Próximamente",
 		"v1_tag": "Pre-release",
 		"v1_changes": [
@@ -217,7 +217,7 @@
 			"Workspaces ilimitados para donantes.",
 			"Autenticación con Google.",
 			"Tema claro/oscuro.",
-			"Modo alpha: funcionalidades operativas, en evolución constante."
+			"Modo v0.8.0: funcionalidades operativas, en evolución constante."
 		]
 	}
 }

@@ -28,9 +28,9 @@
 	--card-bg: rgba(255, 255, 255, 0.85);
 	--card-border: rgba(150, 120, 255, 0.2);
 	--card-shadow: 0 20px 40px rgba(106, 76, 255, 0.04);
-	--btn-gradient: linear-gradient(135deg, #34d399, #6a4cff);
-	--btn-shadow: 0 8px 24px rgba(52, 211, 153, 0.3);
-	--btn-hover-gradient: linear-gradient(135deg, #6ee7b7, #9678ff);
+	--btn-gradient: linear-gradient(135deg, #34d399, #10b981);
+	--btn-shadow: 0 4px 18px rgba(52, 211, 153, 0.42);
+	--btn-hover-gradient: linear-gradient(135deg, #6ee7b7, #34d399);
 	--backdrop-blur: blur(12px);
 	--meta: #f0edff;
 	--video-bg: linear-gradient(135deg, #e8e3ff 0%, #f0ecff 100%);
@@ -63,9 +63,9 @@
 	--card-bg: rgba(255, 255, 255, 0.03);
 	--card-border: rgba(150, 120, 255, 0.18);
 	--card-shadow: 0 20px 40px rgba(106, 76, 255, 0.04);
-	--btn-gradient: linear-gradient(135deg, #34d399, #6a4cff);
-	--btn-shadow: 0 8px 24px rgba(52, 211, 153, 0.3);
-	--btn-hover-gradient: linear-gradient(135deg, #6ee7b7, #9678ff);
+	--btn-gradient: linear-gradient(135deg, #34d399, #10b981);
+	--btn-shadow: 0 4px 14px rgba(52, 211, 153, 0.32);
+	--btn-hover-gradient: linear-gradient(135deg, #6ee7b7, #34d399);
 	--backdrop-blur: blur(12px);
 	--meta: #1a1640;
 	--video-bg: linear-gradient(135deg, #1a1640 0%, #0d0b22 100%);

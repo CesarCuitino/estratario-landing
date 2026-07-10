@@ -54,7 +54,7 @@
 			"subtitle": "Each document you add follows an iterative 4-phase cycle to <1>distill your brand knowledge</1> without friction."
 		},
 		"cta": {
-			"badge": "FULL ALPHA ACCESS",
+			"badge": "FULL V0.8.0 ACCESS",
 			"title": "Turn your immersion meetings into your <1>biggest competitive advantage</1>",
 			"subtitle": "Use the platform as a <1>live copilot</1> during your consulting sessions. Structure your clients' Core in real time while validating the strategy together.",
 			"button": "Start Free",
@@ -116,7 +116,7 @@
 		"item6_title": "Smart selection",
 		"item6_desc": "When creating a workspace, the platform identifies your stage (concept, early, growth, scale) and suggests only the documents you actually need.",
 		"status_label": "Current status",
-		"status_desc": "The platform is in alpha stage. Features are operational but constantly evolving. By donating, you get full access for 30 days and help shape the project's direction."
+		"status_desc": "The platform is in v0.8.0 stage. Features are operational but constantly evolving. By donating, you get full access for 30 days and help shape the project's direction."
 	},
 	"privacy": {
 		"title": "Privacy Policy",
@@ -160,8 +160,8 @@
 		"s1_p2": "These terms may be updated at any time. Changes will be notified through the application or by email. Continued use of the service after notification constitutes acceptance of the changes.",
 		"s2_title": "2. Service description",
 		"s2_p1": "This application is an AI-powered marketing tool that allows you to generate content, analyze data, and optimize marketing strategies.",
-		"s2_alpha_label": "Alpha status:",
-		"s2_alpha_desc": "the application is in alpha stage of development. This means it may contain errors, be subject to significant changes without prior notice, and continuous availability or absence of interruptions is not guaranteed. The service is provided \"as is\" and may be modified or discontinued at any time.",
+		"s2_alpha_label": "v0.8.0 status:",
+		"s2_alpha_desc": "the application is in v0.8.0 stage of development. This means it may contain errors, be subject to significant changes without prior notice, and continuous availability or absence of interruptions is not guaranteed. The service is provided \"as is\" and may be modified or discontinued at any time.",
 		"s3_title": "3. User accounts",
 		"s3_p1": "To use the application you must create an account. You are responsible for:",
 		"s3_item1": "Maintaining the confidentiality of your login credentials.",
@@ -189,7 +189,7 @@
 		"s8_item2_b": "not subject to refund or reimbursement",
 		"s8_item2_c": "under any circumstances.",
 		"s8_item3": "In exchange for your donation, you will receive access to additional features for 30 days, including unlimited workspaces and early access to new features.",
-		"s8_item4": "Since the application is in alpha stage, uninterrupted operation or availability of promised features is not guaranteed.",
+		"s8_item4": "Since the application is in v0.8.0 stage, uninterrupted operation or availability of promised features is not guaranteed.",
 		"s8_item5": "The controller is not registered as a company nor has initiated formal commercial activities, so donations are made as personal support for the project's development.",
 		"s9_title": "9. Privacy",
 		"s9_p1": "The use of your personal data is governed by our",
@@ -203,7 +203,7 @@
 	"changelog": {
 		"title": "Changelog",
 		"subtitle": "Platform changes and updates history.",
-		"v1_version": "Alpha 1.0",
+		"v1_version": "v0.8.0",
 		"v1_date": "Coming soon",
 		"v1_tag": "Pre-release",
 		"v1_changes": [
@@ -217,7 +217,7 @@
 			"Unlimited workspaces for donors.",
 			"Google authentication.",
 			"Light/dark theme.",
-			"Alpha mode: operational features, constantly evolving."
+			"v0.8.0 mode: operational features, constantly evolving."
 		]
 	}
 }
