@@ -1,8 +1,10 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { t } from "../../i18n/t";
+import { rot13 } from "../../i18n/rot13";
 
 const locale = "en" as const;
+const encodedEmail = rot13("contacto@cesarcuitino.cl");
 const sections: { titleKey: string; content: { type: "p" | "ul"; key?: string; items?: string[] }[] }[] = [
 	{ titleKey: "privacy.s1_title", content: [{ type: "p", key: "privacy.s1_p1" }] },
 	{
@@ -65,7 +67,7 @@ const sections: { titleKey: string; content: { type: "p" | "ul"; key?: string; i
 									))}
 								</ul>
 							) : (
-								<p class="leading-relaxed">{t(c.key!, locale)} <a href="mailto:contacto@cesarcuitino.cl" class="underline text-foreground">contacto@cesarcuitino.cl</a></p>
+								<p class="leading-relaxed">{t(c.key!, locale)} <a href="#" data-rot13-href={encodedEmail} data-rot13={encodedEmail} class="underline text-foreground">{encodedEmail}</a></p>
 							),
 						)}
 					</div>

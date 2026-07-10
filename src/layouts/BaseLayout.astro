@@ -73,5 +73,18 @@ const { locale, title = "Estratario", description = "" } = Astro.props;
 			<slot />
 		</main>
 		<Footer locale={locale} />
+		<script is:inline>
+			(() => {
+				function r(s) {
+					return s.replace(/[a-zA-Z]/g, c => String.fromCharCode(c.charCodeAt(0) + (c.toLowerCase() < "n" ? 13 : -13)));
+				}
+				document.querySelectorAll("[data-rot13-href]").forEach(el => {
+					if (el instanceof HTMLAnchorElement) el.href = "mailto:" + r(el.getAttribute("data-rot13-href") || "");
+				});
+				document.querySelectorAll("[data-rot13]").forEach(el => {
+					el.textContent = r(el.getAttribute("data-rot13") || "");
+				});
+			})();
+		</script>
 	</body>
 </html>

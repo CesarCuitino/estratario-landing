@@ -1,6 +1,7 @@
 ---
 import type { Locale } from "../../config";
 import AppLogo from "../ui/AppLogo.astro";
+import { rot13 } from "../../i18n/rot13";
 
 interface Props {
 	locale: Locale;
@@ -9,12 +10,15 @@ interface Props {
 const { locale } = Astro.props;
 const t = (await import("../../i18n/t")).t;
 
+const encodedEmail = rot13("contacto@cesarcuitino.cl");
+
 const contactLinks = [
 	{
 		key: "email",
 		label: "Email",
-		value: "contacto@cesarcuitino.cl",
-		href: "mailto:contacto@cesarcuitino.cl",
+		value: encodedEmail,
+		href: "#",
+		encoded: encodedEmail,
 	},
 	{
 		key: "linkedin",
@@ -43,10 +47,11 @@ const localePrefix = locale === "es" ? "" : `/${locale}`;
 					{contactLinks.map((link) => (
 						<a
 							href={link.href}
+							{...("encoded" in link ? { "data-rot13-href": link.encoded } : {})}
 							class="inline-flex items-center gap-2 px-3 py-2 rounded-lg no-underline transition-colors bg-surface border border-border-secondary text-foreground hover:bg-surface-hover max-w-[260px] text-xs"
 						>
 							<span class="text-2xs shrink-0 uppercase tracking-widest text-foreground-tertiary">{link.label}</span>
-							<span class="font-semibold">{link.value}</span>
+							<span class="font-semibold" {...("encoded" in link ? { "data-rot13": link.encoded } : {})}>{link.value}</span>
 							{"isWa" in link && link.isWa && <span class="ml-auto text-2xs font-semibold font-mono">{t("landing.footer.support", locale)}</span>}
 						</a>
 					))}
