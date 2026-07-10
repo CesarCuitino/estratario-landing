@@ -57,7 +57,24 @@ const websiteSchema = {
 	<CtaSection locale={locale} />
 </BaseLayout>
 
-<script>
-	import { initLandingMotion } from "../scripts/landing-motion";
-	initLandingMotion();
+<script is:inline>
+	(() => {
+		if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+			document.querySelectorAll(".scroll-fade").forEach((el) => {
+				el.style.opacity = "1";
+				el.style.transform = "none";
+			});
+			return;
+		}
+		const o = new IntersectionObserver((entries) => {
+			for (const e of entries) {
+				if (!e.isIntersecting) continue;
+				const el = e.target;
+				if (el.hasAttribute("data-step-id")) continue;
+				el.animate([{ opacity: "0", transform: "translateY(20px)" }, { opacity: "1", transform: "translateY(0)" }], { duration: 600, easing: "ease-out", fill: "forwards" });
+				o.unobserve(el);
+			}
+		}, { threshold: 0.15 });
+		document.querySelectorAll(".scroll-fade:not([data-step-id])").forEach((el) => o.observe(el));
+	})();
 </script>
