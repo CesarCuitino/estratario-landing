@@ -78,3 +78,7 @@ Skills are loaded from `.agents/skills/`. Each provides the agent with project-s
 
 - SPA app lives at `C:\Users\cesar\Projects\ai-free-llm` (ai-free-llm). Deployed at app.example.com.
 - This site deploys to example.com. User handles Cloudflare integration.
+
+## llms.txt
+
+The site has a `/llms.txt` file at `public/llms.txt` following the llms.txt spec. Whenever pages, content, or site structure changes (new pages, new blog posts, new sections, URL changes), update `public/llms.txt` to reflect the changes. The file provides LLMs with a curated overview of the site's content and purpose.
