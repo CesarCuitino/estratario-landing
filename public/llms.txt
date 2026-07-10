@@ -2,7 +2,7 @@
 
 > Estratario es una plataforma SaaS que centraliza el conocimiento de marca de múltiples clientes en un Core Estratégico reutilizable, eliminando el trabajo duplicado en estrategia de marketing. Funciona como un copiloto en vivo durante sesiones de consultoría, estructurando el Core de los clientes en tiempo real mientras se valida la estrategia junto a ellos. Construye una fuente única de verdad estratégica que se puede inyectar con precisión quirúrgica en cualquier prompt o flujo de ejecución de IA (ChatGPT, Claude, Gemini).
 
-La plataforma está en fase v0.8.0. El sitio web de aterrizaje (estratario.com) está construido con Astro 5 SSG y Tailwind CSS 3. Genera 14 páginas estáticas: landing, features, changelog, términos y privacidad, todo en español e inglés. El sitio es 100% estático, sin JavaScript runtime por defecto.
+La plataforma está en fase v0.8.0. Este sitio web es el landing page oficial del producto, disponible en español e inglés.
 
 ## Core Pages
 
