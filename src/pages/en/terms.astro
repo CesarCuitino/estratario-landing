@@ -4,6 +4,8 @@ import { t } from "../../i18n/t";
 import { rot13 } from "../../i18n/rot13";
 
 const locale = "en" as const;
+const siteUrl = "https://estratario.com";
+const canonical = `${siteUrl}/en/terms`;
 const email = "contacto@cesarcuitino.cl";
 const encodedEmail = rot13(email);
 
@@ -74,6 +76,8 @@ const sections: {
 	locale={locale}
 	title={t("terms.title", locale) + " — Estratario"}
 	description={t("terms.title", locale)}
+	canonical={canonical}
+	alternates={[{ lang: "es", url: `${siteUrl}/terms` }]}
 >
 	<div class="px-4 md:px-8 max-w-prose mx-auto pt-24 pb-24">
 		<h1 class="text-3xl font-bold mb-2 text-foreground-heading">

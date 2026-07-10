@@ -1,0 +1,94 @@
+---
+import SectionHeader from "../ui/SectionHeader.astro";
+import type { Locale } from "../../config";
+import { t } from "../../i18n/t";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const allPosts = (await getCollection("blog")) as CollectionEntry<"blog">[];
+const posts = allPosts
+	.filter((post) => post.data.locale === locale && !post.data.draft)
+	.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+	.slice(0, 2);
+
+const localePrefix = locale === "es" ? "" : `/${locale}`;
+---
+
+<section id="blog-section" class="relative px-4 md:px-8 max-w-container mx-auto pt-12 md:pt-24 pb-12 md:pb-24">
+	<SectionHeader
+		locale={locale}
+		badge={t("landing.blog.badge", locale)}
+		title="landing.blog.title"
+	/>
+
+	{posts.length > 0 ? (
+		<div class="flex flex-wrap gap-6 justify-center max-w-[900px] mx-auto mb-10">
+			{posts.map((post) => {
+				const slug = post.slug;
+				return (
+					<a
+						href={`${localePrefix}/blog/${slug}`}
+						class="group flex-[1_1_380px] max-w-full p-6 rounded-2xl border border-border-secondary bg-surface no-underline scroll-fade transition-all duration-300 hover:border-primary hover:-translate-y-0.5 hover:shadow-lg"
+						style="opacity:0;transform:translateY(20px);"
+					>
+						<time class="block text-2xs font-mono font-semibold uppercase tracking-wider text-foreground-tertiary mb-3">
+							{post.data.pubDate.toLocaleDateString(locale === "es" ? "es-CL" : "en-US", {
+								year: "numeric",
+								month: "long",
+								day: "numeric",
+							})}
+						</time>
+						<h3 class="font-bold text-base mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
+							{post.data.title}
+						</h3>
+						<p class="text-sm text-foreground-secondary leading-relaxed">
+							{post.data.description}
+						</p>
+					</a>
+				);
+			})}
+		</div>
+	) : (
+		<p class="text-center text-foreground-secondary mb-10">Coming soon.</p>
+	)}
+
+	<div class="text-center">
+		<a
+			href={`${localePrefix}/blog`}
+			class="inline-flex items-center gap-2 text-sm font-semibold text-primary no-underline hover:opacity-80 transition-opacity"
+		>
+			{t("landing.blog.view_all", locale)}
+		</a>
+	</div>
+</section>
+
+<script is:inline>
+	(() => {
+		const cards = document.querySelectorAll("#blog-section .scroll-fade");
+		if (!cards.length) return;
+		const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						const card = entry.target;
+						const idx = Array.from(cards).indexOf(card);
+						const delay = reduce ? 0 : idx * 0.15;
+						card.style.transition = `all 0.5s ease ${delay}s`;
+						card.style.opacity = "1";
+						card.style.transform = "translateY(0)";
+						observer.unobserve(card);
+					}
+				}
+			},
+			{ threshold: 0.2 },
+		);
+		cards.forEach((card) => observer.observe(card));
+	})();
+</script>

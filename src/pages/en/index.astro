@@ -3,22 +3,57 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import HeroSection from "../../components/sections/HeroSection.astro";
 import DiagnosticSection from "../../components/sections/DiagnosticSection.astro";
 import HowItWorksSection from "../../components/sections/HowItWorksSection.astro";
+import BlogSection from "../../components/sections/BlogSection.astro";
 import CtaSection from "../../components/sections/CtaSection.astro";
 import type { Locale } from "../../config";
-import { t } from "../../i18n/t";
 
 const locale: Locale = "en";
-const title = t("landing.hero.badge", locale) + " — Estratario";
-const raw = t("landing.hero.description", locale);
-const description = raw.replace(/<[^>]*>/g, "");
+const siteUrl = "https://estratario.com";
+const canonical = `${siteUrl}/en/`;
+const title = "Estratario — Strategic Core for AI-Powered Marketing";
+const description =
+	"Centralize your clients' knowledge into a reusable Strategic Core. Eliminate duplicate work in your marketing strategy with AI.";
+
+const alternates = [
+	{ lang: "es", url: siteUrl },
+];
+
+const organizationSchema = {
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	name: "Estratario",
+	url: siteUrl,
+	logo: `${siteUrl}/icon.svg`,
+	description,
+	sameAs: [
+		"https://www.linkedin.com/in/cesarcuitino",
+	],
+};
+
+const websiteSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	name: "Estratario",
+	url: `${siteUrl}/en/`,
+	description,
+	inLanguage: "en",
+};
 ---
 
-<BaseLayout locale={locale} title={title} description={description}>
+<BaseLayout
+	locale={locale}
+	title={title}
+	description={description}
+	canonical={canonical}
+	alternates={alternates}
+	jsonLd={[organizationSchema, websiteSchema]}
+>
 	<HeroSection locale={locale} />
 
 	<DiagnosticSection locale={locale} />
 
 	<HowItWorksSection locale={locale} />
+	<BlogSection locale={locale} />
 	<CtaSection locale={locale} />
 </BaseLayout>
 
@@ -26,4 +61,3 @@ const description = raw.replace(/<[^>]*>/g, "");
 	import { initLandingMotion } from "../../scripts/landing-motion";
 	initLandingMotion();
 </script>
-

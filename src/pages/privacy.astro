@@ -4,6 +4,8 @@ import { t } from "../i18n/t";
 import { rot13 } from "../i18n/rot13";
 
 const locale = "es" as const;
+const siteUrl = "https://estratario.com";
+const canonical = `${siteUrl}/privacy`;
 const encodedEmail = rot13("contacto@cesarcuitino.cl");
 const sections: { titleKey: string; content: { type: "p" | "ul"; key?: string; items?: string[] }[] }[] = [
 	{ titleKey: "privacy.s1_title", content: [{ type: "p", key: "privacy.s1_p1" }] },
@@ -43,6 +45,8 @@ const sections: { titleKey: string; content: { type: "p" | "ul"; key?: string; i
 	locale={locale}
 	title={t("privacy.title", locale) + " — Estratario"}
 	description={t("privacy.title", locale)}
+	canonical={canonical}
+	alternates={[{ lang: "en", url: `${siteUrl}/en/privacy` }]}
 >
 	<div class="px-4 md:px-8 max-w-prose mx-auto pt-24 pb-24">
 		<h1 class="text-3xl font-bold mb-2 text-foreground-heading">

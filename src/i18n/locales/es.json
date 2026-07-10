@@ -51,7 +51,12 @@
 		"how_it_works": {
 			"badge": "CÓMO FUNCIONA",
 			"title": "Un flujo que te <1>guía paso a paso</1> a construir tu Core Estratégico",
-			"subtitle": "Cada documento que añades sigue un ciclo iterativo de 4 fases para <1>destilar tu conocimiento de marca</1> sin fricción."
+			"subtitle": "Cada documento que añades sigue un ciclo iterativo de 4 fases para <1>distilar tu conocimiento de marca</1> sin fricción."
+		},
+		"blog": {
+			"badge": "BLOG",
+			"title": "Recursos para construir tu <1>Core Estratégico</1>",
+			"view_all": "Ver todos los artículos →"
 		},
 		"cta": {
 			"badge": "ACCESO COMPLETO A V0.8.0",
@@ -65,6 +70,7 @@
 			"feature_4": "Control total de costes (BYOK): Conecta tu <1>propia API Key</1> de los proveedores líderes mundiales y gestiona tu inferencia sin comisiones ni sobreprecios."
 		},
 		"footer": {
+			"blog": "Blog",
 			"privacy": "Privacidad",
 			"terms": "Términos",
 			"changelog": "Changelog",

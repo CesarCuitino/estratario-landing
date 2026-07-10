@@ -4,6 +4,15 @@ import { t } from "../../../i18n/t";
 import en from "../../../i18n/locales/en.json";
 
 const locale = "en" as const;
+const siteUrl = "https://estratario.com";
+const canonical = `${siteUrl}/en/changelog`;
+const title = `${t("changelog.title", locale)} — Estratario`;
+const description = t("changelog.subtitle", locale);
+
+const alternates = [
+	{ lang: "es", url: `${siteUrl}/changelog` },
+];
+
 type Changes = string[];
 const changes = (en as Record<string, unknown>).changelog as { v1_changes: Changes };
 const items = changes.v1_changes;
@@ -11,8 +20,10 @@ const items = changes.v1_changes;
 
 <BaseLayout
 	locale={locale}
-	title={t("changelog.title", locale) + " — Estratario"}
-	description={t("changelog.subtitle", locale)}
+	title={title}
+	description={description}
+	canonical={canonical}
+	alternates={alternates}
 >
 	<div class="px-4 md:px-8 max-w-prose mx-auto pt-24 pb-24">
 		<h1 class="text-3xl font-bold mb-2 text-foreground-heading">
@@ -22,16 +33,12 @@ const items = changes.v1_changes;
 			{t("changelog.subtitle", locale)}
 		</p>
 
-		<div
-			class="p-6 rounded-xl bg-surface border border-border-secondary"
-		>
+		<div class="p-6 rounded-xl bg-surface border border-border-secondary">
 			<div class="flex items-center gap-3 mb-4">
 				<h2 class="text-xl font-bold text-foreground-heading">
 					{t("changelog.v1_version", locale)}
 				</h2>
-				<span
-					class="text-2xs font-semibold uppercase tracking-widest px-2 py-0.5 rounded bg-border-secondary text-foreground-tertiary"
-				>
+				<span class="text-2xs font-semibold uppercase tracking-widest px-2 py-0.5 rounded bg-border-secondary text-foreground-tertiary">
 					{t("changelog.v1_tag", locale)}
 				</span>
 			</div>

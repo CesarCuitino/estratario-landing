@@ -51,6 +51,7 @@ const langLabel = locale === "es" ? "EN" : "ES";
 				class="text-2xs font-semibold uppercase tracking-widest no-underline text-foreground-secondary hover:text-foreground transition-colors px-1"
 				aria-label={t("landing.nav.lang_label", locale)}
 				lang={locale === "es" ? "en" : "es"}
+				data-save-locale
 			>
 				{langLabel}
 			</a>
@@ -156,4 +157,12 @@ const langLabel = locale === "es" ? "EN" : "ES";
 	});
 	const initTheme = document.documentElement.getAttribute("data-theme");
 	toggle?.setAttribute("aria-pressed", String(initTheme === "dark"));
+
+	const langLink = document.querySelector("[data-save-locale]");
+	langLink?.addEventListener("click", () => {
+		const next = langLink.getAttribute("lang") || "";
+		if (next === "en" || next === "es") {
+			try { localStorage.setItem("locale", next); } catch (_) {}
+		}
+	});
 </script>

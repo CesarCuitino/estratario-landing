@@ -4,6 +4,14 @@ import SectionHeader from "../../components/ui/SectionHeader.astro";
 import { t } from "../../i18n/t";
 
 const locale = "en" as const;
+const siteUrl = "https://estratario.com";
+const canonical = `${siteUrl}/en/features`;
+const title = `${t("features.title", locale)} — Estratario`;
+const description = t("features.subtitle", locale);
+
+const alternates = [
+	{ lang: "es", url: `${siteUrl}/features` },
+];
 
 const items = [
 	{ titleKey: "features.item1_title", descKey: "features.item1_desc" },
@@ -17,8 +25,10 @@ const items = [
 
 <BaseLayout
 	locale={locale}
-	title={t("features.title", locale) + " — Estratario"}
-	description={t("features.subtitle", locale)}
+	title={title}
+	description={description}
+	canonical={canonical}
+	alternates={alternates}
 >
 	<div class="px-4 md:px-8 max-w-6xl mx-auto pt-24 pb-24">
 		<SectionHeader
@@ -27,20 +37,14 @@ const items = [
 			title={t("features.title", locale) + " — Estratario"}
 		/>
 
-		<p
-			class="text-center text-lg max-w-3xl mx-auto mb-16 text-foreground-secondary"
-		>
+		<p class="text-center text-lg max-w-3xl mx-auto mb-16 text-foreground-secondary">
 			{t("features.subtitle", locale)}
 		</p>
 
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 			{items.map((item) => (
-				<div
-					class="p-6 rounded-xl transition-all bg-card border border-card"
-				>
-					<h3
-						class="text-lg font-bold mb-2 text-foreground-heading"
-					>
+				<div class="p-6 rounded-xl transition-all bg-card border border-card hover:shadow-card">
+					<h3 class="text-lg font-bold mb-2 text-foreground-heading">
 						{t(item.titleKey, locale)}
 					</h3>
 					<p class="text-sm leading-relaxed text-foreground-secondary">
@@ -50,12 +54,8 @@ const items = [
 			))}
 		</div>
 
-		<div
-			class="mt-16 p-6 rounded-xl max-w-2xl mx-auto text-center bg-surface border border-border-secondary"
-		>
-			<p
-				class="text-xs font-semibold uppercase tracking-widest mb-2 text-foreground-tertiary"
-			>
+		<div class="mt-16 p-6 rounded-xl max-w-2xl mx-auto text-center bg-surface border border-border-secondary">
+			<p class="text-2xs font-semibold uppercase tracking-widest mb-2 text-foreground-tertiary">
 				{t("features.status_label", locale)}
 			</p>
 			<p class="text-sm leading-relaxed text-foreground-secondary">

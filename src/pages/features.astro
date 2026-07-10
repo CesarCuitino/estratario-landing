@@ -4,6 +4,14 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
 import { t } from "../i18n/t";
 
 const locale = "es" as const;
+const siteUrl = "https://estratario.com";
+const canonical = `${siteUrl}/features`;
+const title = `${t("features.title", locale)} — Estratario`;
+const description = t("features.subtitle", locale);
+
+const alternates = [
+	{ lang: "en", url: `${siteUrl}/en/features` },
+];
 
 const items = [
 	{ titleKey: "features.item1_title", descKey: "features.item1_desc" },
@@ -17,8 +25,10 @@ const items = [
 
 <BaseLayout
 	locale={locale}
-	title={t("features.title", locale) + " — Estratario"}
-	description={t("features.subtitle", locale)}
+	title={title}
+	description={description}
+	canonical={canonical}
+	alternates={alternates}
 >
 	<div class="px-4 md:px-8 max-w-6xl mx-auto pt-24 pb-24">
 		<SectionHeader

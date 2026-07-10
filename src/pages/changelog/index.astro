@@ -4,6 +4,15 @@ import { t } from "../../i18n/t";
 import es from "../../i18n/locales/es.json";
 
 const locale = "es" as const;
+const siteUrl = "https://estratario.com";
+const canonical = `${siteUrl}/changelog`;
+const title = `${t("changelog.title", locale)} — Estratario`;
+const description = t("changelog.subtitle", locale);
+
+const alternates = [
+	{ lang: "en", url: `${siteUrl}/en/changelog` },
+];
+
 type Changes = string[];
 const changes = (es as Record<string, unknown>).changelog as { v1_changes: Changes };
 const items = changes.v1_changes;
@@ -11,8 +20,10 @@ const items = changes.v1_changes;
 
 <BaseLayout
 	locale={locale}
-	title={t("changelog.title", locale) + " — Estratario"}
-	description={t("changelog.subtitle", locale)}
+	title={title}
+	description={description}
+	canonical={canonical}
+	alternates={alternates}
 >
 	<div class="px-4 md:px-8 max-w-prose mx-auto pt-24 pb-24">
 		<h1 class="text-3xl font-bold mb-2 text-foreground-heading">

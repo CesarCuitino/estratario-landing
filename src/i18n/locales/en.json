@@ -53,6 +53,11 @@
 			"title": "A flow that <1>guides you step by step</1> to build your Strategic Core",
 			"subtitle": "Each document you add follows an iterative 4-phase cycle to <1>distill your brand knowledge</1> without friction."
 		},
+		"blog": {
+			"badge": "BLOG",
+			"title": "Resources to build your <1>Strategic Core</1>",
+			"view_all": "View all articles →"
+		},
 		"cta": {
 			"badge": "FULL V0.8.0 ACCESS",
 			"title": "Turn your immersion meetings into your <1>biggest competitive advantage</1>",
@@ -65,6 +70,7 @@
 			"feature_4": "Full cost control (BYOK): Connect your <1>own API Key</1> from leading global providers and manage your inference without commissions or markups."
 		},
 		"footer": {
+			"blog": "Blog",
 			"privacy": "Privacy",
 			"terms": "Terms",
 			"changelog": "Changelog",
