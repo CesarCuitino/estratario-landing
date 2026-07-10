@@ -19,11 +19,11 @@ const t = (await import("../../i18n/t")).t;
 	style="animation-delay: 0.1s;"
 >
 	<video
-		autoplay
+		id="hero-bg"
 		muted
 		loop
 		playsinline
-		preload="auto"
+		preload="none"
 		class="absolute inset-0 w-full h-full object-cover pointer-events-none"
 		style="opacity:0.3;"
 		aria-hidden="true"
@@ -76,9 +76,13 @@ const t = (await import("../../i18n/t")).t;
 
 <script is:inline>
 	(() => {
-		const video = document.querySelector("#hero video");
-		if (!video) return;
 		const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-		if (reduce) video.pause();
+		if (reduce) return;
+		const video = document.getElementById("hero-bg");
+		if (!video || !(video instanceof HTMLVideoElement)) return;
+		requestAnimationFrame(() => {
+			video.load();
+			video.play().catch(() => {});
+		});
 	})();
 </script>
