@@ -1,0 +1,32 @@
+# Estratario
+
+> Estratario es una plataforma SaaS que centraliza el conocimiento de marca de múltiples clientes en un Core Estratégico reutilizable, eliminando el trabajo duplicado en estrategia de marketing. Funciona como un copiloto en vivo durante sesiones de consultoría, estructurando el Core de los clientes en tiempo real mientras se valida la estrategia junto a ellos. Construye una fuente única de verdad estratégica que se puede inyectar con precisión quirúrgica en cualquier prompt o flujo de ejecución de IA (ChatGPT, Claude, Gemini).
+
+La plataforma está en fase v0.8.0. El sitio web de aterrizaje (estratario.com) está construido con Astro 5 SSG y Tailwind CSS 3. Genera 14 páginas estáticas: landing, features, changelog, términos y privacidad, todo en español e inglés. El sitio es 100% estático, sin JavaScript runtime por defecto.
+
+## Core Pages
+
+- [Landing — ES](https://estratario.com/): Página principal en español con hero, diagnóstico, cómo funciona y CTA
+- [Landing — EN](https://estratario.com/en/): Página principal en inglés
+- [Features — ES](https://estratario.com/features): Características del producto en español
+- [Features — EN](https://estratario.com/en/features): Product features in English
+- [Changelog — ES](https://estratario.com/changelog): Historial de versiones y cambios
+- [Changelog — EN](https://estratario.com/en/changelog): Version history and release notes
+
+## Legal
+
+- [Privacy Policy — ES](https://estratario.com/privacy): Política de privacidad
+- [Privacy Policy — EN](https://estratario.com/en/privacy): Privacy policy
+- [Terms & Conditions — ES](https://estratario.com/terms): Términos y condiciones de uso
+- [Terms & Conditions — EN](https://estratario.com/en/terms): Terms and conditions
+
+## Blog
+
+- [Guía: Cómo construir un Core Estratégico — ES](https://estratario.com/blog/guia-core-estrategico): Guía completa para construir un Core Estratégico como consultor de marketing
+- [Strategic Core Guide — EN](https://estratario.com/en/blog/strategic-core-guide): Complete guide to building a Strategic Core as a marketing consultant
+
+## Optional
+
+- [App — Estratario](https://app.estratario.com): Aplicación web principal (requiere registro)
+- [Contacto — César Cuitiño](https://cesarcuitino.cl): Sitio personal del desarrollador
+- [LinkedIn — César Cuitiño](https://www.linkedin.com/in/cesarcuitino): Perfil profesional
