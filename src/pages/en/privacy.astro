@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { t } from "../../i18n/t";
+
+const locale = "en" as const;
+const sections: { titleKey: string; content: { type: "p" | "ul"; key?: string; items?: string[] }[] }[] = [
+	{ titleKey: "privacy.s1_title", content: [{ type: "p", key: "privacy.s1_p1" }] },
+	{
+		titleKey: "privacy.s2_title", content: [
+			{ type: "p", key: "privacy.s2_p1" },
+			{ type: "p", key: "privacy.s2_auth_title" },
+			{ type: "p", key: "privacy.s2_auth_desc" },
+			{ type: "p", key: "privacy.s2_analytics_title" },
+			{ type: "p", key: "privacy.s2_analytics_desc" },
+		],
+	},
+	{
+		titleKey: "privacy.s3_title", content: [
+			{ type: "p", key: "privacy.s3_p1" },
+			{ type: "ul", items: ["privacy.s3_item1", "privacy.s3_item2", "privacy.s3_item3", "privacy.s3_item4"] },
+		],
+	},
+	{ titleKey: "privacy.s4_title", content: [{ type: "p", key: "privacy.s4_p1" }] },
+	{ titleKey: "privacy.s5_title", content: [{ type: "p", key: "privacy.s5_p1" }] },
+	{
+		titleKey: "privacy.s6_title", content: [
+			{ type: "p", key: "privacy.s6_p1" },
+			{ type: "p", key: "privacy.s6_providers_title" },
+			{ type: "p", key: "privacy.s6_providers_desc" },
+			{ type: "p", key: "privacy.s6_legal_title" },
+			{ type: "p", key: "privacy.s6_legal_desc" },
+		],
+	},
+	{ titleKey: "privacy.s7_title", content: [{ type: "p", key: "privacy.s7_p1" }] },
+	{ titleKey: "privacy.s8_title", content: [{ type: "p", key: "privacy.s8_p1" }] },
+	{ titleKey: "privacy.s9_title", content: [{ type: "p", key: "privacy.s9_p1" }] },
+];
+---
+
+<BaseLayout
+	locale={locale}
+	title={t("privacy.title", locale) + " — Estratario"}
+	description={t("privacy.title", locale)}
+>
+	<div class="px-4 md:px-8 max-w-prose mx-auto pt-24 pb-24">
+		<h1 class="text-3xl font-bold mb-2 text-foreground-heading">
+			{t("privacy.title", locale)}
+		</h1>
+		<p class="text-sm mb-12 text-foreground-tertiary">
+			{t("privacy.last_updated", locale)}
+		</p>
+
+		<div class="space-y-10">
+			{sections.map((section) => (
+				<section>
+					<h2 class="text-xl font-bold mb-4 text-foreground-heading">
+						{t(section.titleKey, locale)}
+					</h2>
+					<div class="space-y-3 text-foreground-secondary">
+						{section.content.map((c) =>
+							c.type === "ul" ? (
+								<ul class="list-disc pl-5 space-y-2">
+									{c.items!.map((k) => (
+										<li>{t(k, locale)}</li>
+									))}
+								</ul>
+							) : (
+								<p class="leading-relaxed">{t(c.key!, locale)} <a href="mailto:contacto@cesarcuitino.cl" class="underline text-foreground">contacto@cesarcuitino.cl</a></p>
+							),
+						)}
+					</div>
+				</section>
+			))}
+		</div>
+	</div>
+</BaseLayout>

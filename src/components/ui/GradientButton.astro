@@ -1,0 +1,47 @@
+---
+interface Props {
+	href?: string;
+}
+
+const { href = "" } = Astro.props;
+---
+
+<a href={href} class="gradient-btn">
+	<slot />
+</a>
+
+<style>
+	.gradient-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0.625rem 1.5rem;
+		border-radius: 0.75rem;
+		color: #fff;
+		font-weight: 700;
+		font-size: 0.875rem;
+		border: 0;
+		cursor: pointer;
+		text-decoration: none;
+		min-width: 142px;
+		background: var(--btn-gradient);
+		box-shadow: var(--btn-shadow);
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+	.gradient-btn:hover {
+		transform: translateY(-2px);
+	}
+	.gradient-btn:focus-visible {
+		outline: 2px solid var(--primary);
+		outline-offset: 3px;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.gradient-btn:hover {
+			transform: none;
+		}
+		.gradient-btn {
+			transition: none;
+		}
+	}
+</style>

@@ -1,0 +1,40 @@
+---
+import Trans from "../Trans.astro";
+import type { Locale } from "../../config";
+
+interface Props {
+	locale: Locale;
+	badge?: string;
+	title: string;
+	subtitle?: string;
+	description?: string;
+}
+
+const { locale, badge, title, subtitle, description } = Astro.props;
+---
+
+<div class="text-center flex flex-col items-center mb-16 md:mb-24">
+	{badge && (
+		<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full mb-5 backdrop-blur border border-primary bg-primary-soft">
+			<span class="text-2xs font-bold uppercase tracking-widest text-primary">
+				{badge}
+			</span>
+		</div>
+	)}
+
+	<h2 class="section-title mx-auto mb-0 max-w-prose">
+		<Trans key={title} locale={locale} tagMap={{ "1": 'span class="gradient-text"' }} />
+	</h2>
+
+	{subtitle && (
+		<h3 class="section-subtitle mx-auto mt-3.5 max-w-prose">
+			<Trans key={subtitle} locale={locale} />
+		</h3>
+	)}
+
+	{description && (
+		<p class="section-desc mx-auto max-w-prose" style="margin-top: {subtitle ? '12px' : '18px'};">
+			<Trans key={description} locale={locale} />
+		</p>
+	)}
+</div>

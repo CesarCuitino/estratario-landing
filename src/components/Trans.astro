@@ -1,0 +1,28 @@
+---
+import type { Locale } from "../config";
+
+interface Props {
+	key: string;
+	locale: Locale;
+	tagMap?: Record<string, string>;
+	class?: string;
+}
+
+const { key, locale, tagMap = {}, class: className } = Astro.props;
+const { t } = await import("../i18n/t");
+
+const defaultMap: Record<string, string> = { "1": "strong", "2": "em" };
+const map = { ...defaultMap, ...tagMap };
+
+let html = t(key, locale);
+for (const [num, tag] of Object.entries(map)) {
+	html = html.replace(
+		new RegExp(`<${num}>(.*?)</${num}>`, "gs"),
+		(_, content) => {
+			return `<${tag}>${content}</${tag}>`;
+		},
+	);
+}
+---
+
+{html && <span class:list={className} set:html={html} />}

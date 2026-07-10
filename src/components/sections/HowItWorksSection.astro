@@ -1,0 +1,350 @@
+---
+import SectionHeader from "../ui/SectionHeader.astro";
+import { FileTextIcon, StarIcon, BulbIcon, CheckIcon } from "../ui/Icons";
+import type { Locale } from "../../config";
+import { t } from "../../i18n/t";
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const CARD_COLORS = ["var(--primary)", "var(--brand-accent)", "var(--brand-pink)", "var(--brand-cyan)"];
+
+const PHASES = [
+	{ id: "structure", labelKey: "flow_ring.structure.title", descKey: "flow_ring.structure.desc" },
+	{ id: "extract", labelKey: "flow_ring.extract.title", descKey: "flow_ring.extract.desc" },
+	{ id: "validate", labelKey: "flow_ring.validate.title", descKey: "flow_ring.validate.desc" },
+	{ id: "integrate", labelKey: "flow_ring.integrate.title", descKey: "flow_ring.integrate.desc" },
+] as const;
+
+const ICONS = [FileTextIcon, StarIcon, BulbIcon, CheckIcon];
+		const BURST_PALETTE = ["var(--primary)", "var(--brand-accent)", "var(--brand-pink)", "var(--brand-cyan)", "var(--primary)", "var(--success)", "var(--brand-amber)"];
+---
+
+<section id="how-it-works" class="relative px-4 md:px-8 max-w-container mx-auto pt-12 md:pt-24 pb-12 md:pb-24" data-current-step="0" data-show-burst="false">
+	<style is:global define:vars={{ palette: BURST_PALETTE.join(",") }}>
+		@keyframes fr-halo {
+			0%, 100% { r: 14px; opacity: 0.45; }
+			50% { r: 19px; opacity: 0.10; }
+		}
+		@keyframes hiw-burst {
+			0% { opacity: 1; transform: rotate(var(--angle)) translateX(0) scale(1); }
+			80% { opacity: 0.8; transform: rotate(var(--angle)) translateX(var(--dist)) scale(1); }
+			100% { opacity: 0; transform: rotate(var(--angle)) translateX(calc(var(--dist) * 1.3)) scale(0); }
+		}
+		@keyframes hiw-ring-expand {
+			0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0.85; }
+			100% { transform: translate(-50%, -50%) scale(2.6); opacity: 0; }
+		}
+		@keyframes hiw-core-flash {
+			0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+			40% { opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
+		}
+		.step-line { stroke: var(--border-secondary); stroke-width: 1.5; opacity: 0.5; }
+		.step-ring { fill: none; stroke: var(--border-secondary); stroke-width: 2.5; opacity: 0.6; }
+		.step-ring-inner { fill: none; stroke: var(--border-secondary); stroke-width: 1; opacity: 0.35; stroke-dasharray: 4 3; }
+		.step-node { transition: fill 0.4s ease, stroke 0.4s ease; }
+		.step-node.current { fill: var(--primary); stroke: var(--primary); stroke-width: 0; }
+		.step-node.done { fill: var(--success); stroke: var(--success); stroke-width: 0; }
+		.step-node.pending { fill: transparent; stroke: var(--border-secondary); stroke-width: 2; }
+		.step-label { font-size: 11px; font-family: 'DM Sans', sans-serif; user-select: none; }
+		.step-label.current { fill: var(--text); font-weight: 600; }
+		.step-label.done { fill: var(--text-secondary); font-weight: 400; }
+		.step-label.pending { fill: var(--text-tertiary); font-weight: 400; }
+		.center-label { font-size: 12px; fill: var(--text-secondary); font-weight: 500; font-family: 'DM Sans', sans-serif; user-select: none; }
+		.halo-circle { fill: none; stroke: var(--primary); stroke-width: 1.5; animation: fr-halo 1.8s ease-in-out infinite; }
+		.current-dot { fill: #fff; }
+		.done-check { fill: #fff; font-size: 13px; font-weight: bold; user-select: none; text-anchor: middle; dominant-baseline: central; }
+
+		[data-show-burst="true"] .burst-container { display: block; }
+		[data-show-burst="false"] .burst-container { display: none; }
+
+		.hiw-card { transition: all 0.5s ease, background 0.2s ease, border-color 0.2s ease; }
+		.hiw-card.active { background: var(--surface-hover); }
+		.hiw-card:not(.active) { background: var(--surface); }
+
+		@media (prefers-reduced-motion: reduce) {
+			.halo-circle { animation: none; }
+			.hiw-card { transition: none; }
+		}
+	</style>
+
+	<SectionHeader
+		locale={locale}
+		badge={t("landing.how_it_works.badge", locale)}
+		title="landing.how_it_works.title"
+		subtitle="landing.how_it_works.subtitle"
+	/>
+
+	<div class="flex justify-center mb-16 max-w-[700px] mx-auto">
+		<div class="relative">
+			<svg width="300" height="300" viewBox="0 0 300 300" style="overflow:visible;" role="img" aria-label={t("flow_ring.aria_label", locale)}>
+				<line class="step-line" x1="150" y1="150" x2="150" y2="66" />
+				<line class="step-line" x1="150" y1="150" x2="234" y2="150" />
+				<line class="step-line" x1="150" y1="150" x2="150" y2="234" />
+				<line class="step-line" x1="150" y1="150" x2="66" y2="150" />
+
+				<circle class="step-ring" cx="150" cy="150" r="84" />
+				<circle class="step-ring-inner" cx="150" cy="150" r="29.4" />
+
+				{[0, 1, 2, 3].map((i) => {
+					const x = [150, 234, 150, 66][i];
+					const y = [66, 150, 234, 150][i];
+					const lx = [150, 266, 150, 34][i];
+					const ly = [34, 150, 266, 150][i];
+					const label = t(PHASES[i].labelKey, locale);
+					return (
+						<g>
+							<rect x={lx-40} y={ly-7} width={80} height={14} fill="transparent" />
+							<text x={lx} y={ly} class="step-label current" text-anchor="middle" dominant-baseline="central">
+								{label}
+							</text>
+							<circle cx={x} cy={y} r={12} class="step-node current" />
+						</g>
+					);
+				})}
+
+				<text x="150" y="150" class="center-label" text-anchor="middle" dominant-baseline="central">
+					{t("flow_ring.center_label", locale)}
+				</text>
+			</svg>
+
+			<div class="burst-container" style="position:absolute;top:50%;left:50%;pointer-events:none;z-index:5;" aria-hidden="true">
+				<div class="burst-flash" style="position:absolute;top:0;left:0;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,var(--primary) 0%,transparent 70%);filter:blur(4px);transform:translate(-50%,-50%);animation:hiw-core-flash 0.9s ease-out forwards;"></div>
+				<div class="burst-ring" style="position:absolute;top:0;left:0;width:64px;height:64px;border-radius:50%;border:2px solid var(--primary);transform:translate(-50%,-50%);animation:hiw-ring-expand 1s ease-out forwards;"></div>
+				<div id="burst-particles"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="flex flex-wrap gap-5 justify-center max-w-container mx-auto">
+		{PHASES.map((phase, i) => {
+			const color = CARD_COLORS[i];
+			return (
+				<button
+					type="button"
+					class="hiw-card flex-[1_1_200px] p-6 rounded-2xl cursor-pointer outline-none text-left border border-border-secondary scroll-fade"
+					data-step-id={i}
+					data-phase-color={color}
+					aria-label={t(phase.labelKey, locale)}
+					style="opacity:0;transform:translateY(20px);"
+				>
+					<div
+						class="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+						set:html={ICONS[i]()}
+						style={`color:${color};font-size:20px;background:color-mix(in srgb, ${color} 9%, transparent);`}
+						aria-hidden="true"
+					/>
+					<span class="font-semibold text-base block mb-2 text-foreground">
+						{t(phase.labelKey, locale)}
+					</span>
+					<span class="text-sm text-foreground-secondary">
+						{t(phase.descKey, locale)}
+					</span>
+				</button>
+			);
+		})}
+	</div>
+</section>
+
+<script is:inline>
+	(() => {
+		const section = document.getElementById("how-it-works");
+		if (!section) return;
+		const svg = section.querySelector("svg");
+		const cards = section.querySelectorAll("[data-step-id]");
+const BURST_PALETTE = ["var(--primary)", "var(--brand-accent)", "var(--brand-pink)", "var(--brand-cyan)", "var(--primary)", "var(--success)", "var(--brand-amber)"];
+		const POSITIONS = [{ x: 150, y: 66 }, { x: 234, y: 150 }, { x: 150, y: 234 }, { x: 66, y: 150 }];
+		const BURST_MS = 1400;
+		const AUTO_ADVANCE_MS = 2000;
+		const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		let currentStep = 0;
+		let isHovering = false;
+		let showBurst = false;
+		let autoTimer = null;
+
+		const svgns = "http://www.w3.org/2000/svg";
+
+		function removeBurstElements() {
+			svg?.querySelectorAll(".halo-circle").forEach((h) => h.remove());
+			svg?.querySelectorAll(".current-dot").forEach((d) => d.remove());
+			svg?.querySelectorAll(".done-check").forEach((c) => c.remove());
+		}
+
+		function spawnParticles() {
+			if (reduce) return;
+			const container = document.getElementById("burst-particles");
+			if (!container) return;
+			container.innerHTML = "";
+			for (let i = 0; i < 24; i++) {
+				const angle = (i / 24) * 360 + Math.random() * 12;
+				const dist = 32 + Math.random() * 48;
+				const size = 4 + Math.random() * 6;
+				const color = BURST_PALETTE[i % BURST_PALETTE.length];
+				const delay = Math.random() * 0.12;
+				const dot = document.createElement("div");
+				dot.style.cssText = `position:absolute;width:${size}px;height:${size}px;border-radius:50%;background:${color};top:${-size / 2}px;left:${-size / 2}px;animation:hiw-burst ${BURST_MS * 0.78}ms ${delay}s cubic-bezier(.22,1,.36,1) both;`;
+				dot.style.setProperty("--angle", `${angle}deg`);
+				dot.style.setProperty("--dist", `${dist}px`);
+				container.appendChild(dot);
+			}
+		}
+
+		function clearBurstParticles() {
+			const container = document.getElementById("burst-particles");
+			if (container) container.innerHTML = "";
+		}
+
+		function updateStep(activeIdx) {
+			currentStep = activeIdx;
+			section.setAttribute("data-current-step", String(activeIdx));
+			if (!svg) return;
+			const nodes = svg.querySelectorAll(".step-node");
+			const labels = svg.querySelectorAll(".step-label");
+
+			removeBurstElements();
+
+			POSITIONS.forEach((pos, i) => {
+				const node = nodes[i];
+				const label = labels[i];
+				if (!node || !label) return;
+
+				node.setAttribute("class", "step-node");
+				label.setAttribute("class", "step-label");
+
+				if (i < activeIdx) {
+					node.classList.add("done");
+					label.classList.add("done");
+				} else if (i === activeIdx) {
+					node.classList.add("current");
+					label.classList.add("current");
+				} else {
+					node.classList.add("pending");
+					label.classList.add("pending");
+				}
+
+				if (i < activeIdx) {
+					const check = document.createElementNS(svgns, "text");
+					check.setAttribute("x", String(pos.x));
+					check.setAttribute("y", String(pos.y + 1));
+					check.setAttribute("class", "done-check");
+					check.setAttribute("fill", "#fff");
+					check.setAttribute("text-anchor", "middle");
+					check.setAttribute("dominant-baseline", "central");
+					check.setAttribute("font-size", "13");
+					check.setAttribute("font-weight", "bold");
+					check.textContent = "\u2713";
+					svg.appendChild(check);
+				}
+
+				if (i === activeIdx && !reduce) {
+					const dot = document.createElementNS(svgns, "circle");
+					dot.setAttribute("cx", String(pos.x));
+					dot.setAttribute("cy", String(pos.y));
+					dot.setAttribute("r", "3.5");
+					dot.setAttribute("class", "current-dot");
+					dot.setAttribute("fill", "#fff");
+					svg.appendChild(dot);
+
+					const halo = document.createElementNS(svgns, "circle");
+					halo.setAttribute("cx", String(pos.x));
+					halo.setAttribute("cy", String(pos.y));
+					halo.setAttribute("r", "14");
+					halo.setAttribute("class", "halo-circle");
+					halo.setAttribute("fill", "none");
+					halo.setAttribute("stroke", "var(--primary)");
+					halo.setAttribute("stroke-width", "1.5");
+					svg.appendChild(halo);
+				}
+			});
+
+			cards.forEach((card) => {
+				const idx = parseInt(card.getAttribute("data-step-id"), 10);
+				const color = card.getAttribute("data-phase-color") || "var(--primary)";
+				if (idx === activeIdx) {
+					card.classList.add("active");
+					card.style.borderColor = `color-mix(in srgb, ${color} 25%, transparent)`;
+				} else {
+					card.classList.remove("active");
+					card.style.borderColor = "";
+				}
+			});
+		}
+
+		function triggerBurst() {
+			if (reduce) return;
+			showBurst = true;
+			section.setAttribute("data-show-burst", "true");
+			updateStep(4);
+			spawnParticles();
+			setTimeout(() => {
+				showBurst = false;
+				section.setAttribute("data-show-burst", "false");
+				clearBurstParticles();
+				updateStep(0);
+				scheduleNext();
+			}, BURST_MS);
+		}
+
+		function scheduleNext() {
+			if (autoTimer) clearTimeout(autoTimer);
+			if (reduce || isHovering || showBurst) return;
+			autoTimer = setTimeout(() => {
+				if (currentStep >= 3) {
+					triggerBurst();
+				} else {
+					updateStep(currentStep + 1);
+					scheduleNext();
+				}
+			}, AUTO_ADVANCE_MS);
+		}
+
+		function activateCard(idx) {
+			isHovering = true;
+			if (autoTimer) clearTimeout(autoTimer);
+			updateStep(idx);
+		}
+
+		cards.forEach((card) => {
+			card.addEventListener("mouseenter", () => {
+				const idx = parseInt(card.getAttribute("data-step-id"), 10);
+				activateCard(idx);
+			});
+			card.addEventListener("mouseleave", () => {
+				isHovering = false;
+				scheduleNext();
+			});
+			card.addEventListener("focus", () => {
+				const idx = parseInt(card.getAttribute("data-step-id"), 10);
+				activateCard(idx);
+			});
+			card.addEventListener("blur", () => {
+				isHovering = false;
+				scheduleNext();
+			});
+		});
+
+		const fadeObserver = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						const card = entry.target;
+						const idx = parseInt(card.getAttribute("data-step-id"), 10);
+						const delay = reduce ? 0 : idx * 0.12;
+						card.style.transition = `all 0.5s ease ${delay}s, background 0.2s ease, border-color 0.2s ease`;
+						card.style.opacity = "1";
+						card.style.transform = "translateY(0)";
+						fadeObserver.unobserve(card);
+					}
+				}
+			},
+			{ threshold: 0.2 },
+		);
+		cards.forEach((card) => fadeObserver.observe(card));
+
+		updateStep(0);
+		scheduleNext();
+	})();
+</script>

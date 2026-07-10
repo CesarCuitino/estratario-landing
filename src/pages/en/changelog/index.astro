@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { t } from "../../../i18n/t";
+import en from "../../../i18n/locales/en.json";
+
+const locale = "en" as const;
+type Changes = string[];
+const changes = (en as Record<string, unknown>).changelog as { v1_changes: Changes };
+const items = changes.v1_changes;
+---
+
+<BaseLayout
+	locale={locale}
+	title={t("changelog.title", locale) + " — Estratario"}
+	description={t("changelog.subtitle", locale)}
+>
+	<div class="px-4 md:px-8 max-w-prose mx-auto pt-24 pb-24">
+		<h1 class="text-3xl font-bold mb-2 text-foreground-heading">
+			{t("changelog.title", locale)}
+		</h1>
+		<p class="text-sm mb-12 text-foreground-tertiary">
+			{t("changelog.subtitle", locale)}
+		</p>
+
+		<div
+			class="p-6 rounded-xl bg-surface border border-border-secondary"
+		>
+			<div class="flex items-center gap-3 mb-4">
+				<h2 class="text-xl font-bold text-foreground-heading">
+					{t("changelog.v1_version", locale)}
+				</h2>
+				<span
+					class="text-2xs font-semibold uppercase tracking-widest px-2 py-0.5 rounded bg-border-secondary text-foreground-tertiary"
+				>
+					{t("changelog.v1_tag", locale)}
+				</span>
+			</div>
+			<p class="text-sm mb-6 text-foreground-tertiary">
+				{t("changelog.v1_date", locale)}
+			</p>
+			<ul class="space-y-3">
+				{items.map((change: string, i: number) => (
+					<li class="flex gap-3 text-sm leading-relaxed text-foreground-secondary">
+						<span class="shrink-0 font-mono text-2xs mt-0.5 text-foreground-tertiary">
+							{i + 1}.
+						</span>
+						<span>{change}</span>
+					</li>
+				))}
+			</ul>
+		</div>
+	</div>
+</BaseLayout>

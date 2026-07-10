@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeader from "../../components/ui/SectionHeader.astro";
+import { t } from "../../i18n/t";
+
+const locale = "en" as const;
+
+const items = [
+	{ titleKey: "features.item1_title", descKey: "features.item1_desc" },
+	{ titleKey: "features.item2_title", descKey: "features.item2_desc" },
+	{ titleKey: "features.item3_title", descKey: "features.item3_desc" },
+	{ titleKey: "features.item4_title", descKey: "features.item4_desc" },
+	{ titleKey: "features.item5_title", descKey: "features.item5_desc" },
+	{ titleKey: "features.item6_title", descKey: "features.item6_desc" },
+] as const;
+---
+
+<BaseLayout
+	locale={locale}
+	title={t("features.title", locale) + " — Estratario"}
+	description={t("features.subtitle", locale)}
+>
+	<div class="px-4 md:px-8 max-w-6xl mx-auto pt-24 pb-24">
+		<SectionHeader
+			locale={locale}
+			badge={t("features.title", locale)}
+			title={t("features.title", locale) + " — Estratario"}
+		/>
+
+		<p
+			class="text-center text-lg max-w-3xl mx-auto mb-16 text-foreground-secondary"
+		>
+			{t("features.subtitle", locale)}
+		</p>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+			{items.map((item) => (
+				<div
+					class="p-6 rounded-xl transition-all bg-card border border-card"
+				>
+					<h3
+						class="text-lg font-bold mb-2 text-foreground-heading"
+					>
+						{t(item.titleKey, locale)}
+					</h3>
+					<p class="text-sm leading-relaxed text-foreground-secondary">
+						{t(item.descKey, locale)}
+					</p>
+				</div>
+			))}
+		</div>
+
+		<div
+			class="mt-16 p-6 rounded-xl max-w-2xl mx-auto text-center bg-surface border border-border-secondary"
+		>
+			<p
+				class="text-xs font-semibold uppercase tracking-widest mb-2 text-foreground-tertiary"
+			>
+				{t("features.status_label", locale)}
+			</p>
+			<p class="text-sm leading-relaxed text-foreground-secondary">
+				{t("features.status_desc", locale)}
+			</p>
+		</div>
+	</div>
+</BaseLayout>

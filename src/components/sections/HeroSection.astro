@@ -1,0 +1,84 @@
+---
+import Trans from "../Trans.astro";
+import GradientButton from "../ui/GradientButton.astro";
+import HeroVideoTrigger from "./HeroVideoTrigger.astro";
+import type { Locale } from "../../config";
+import { APP_URL } from "../../config";
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = (await import("../../i18n/t")).t;
+---
+
+<section
+	id="hero"
+	class="relative overflow-hidden w-full min-h-screen landing-section"
+	style="animation-delay: 0.1s;"
+>
+	<video
+		autoplay
+		muted
+		loop
+		playsinline
+		preload="auto"
+		class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+		style="opacity:0.3;"
+		aria-hidden="true"
+	>
+		<source src="/hero-bg.mp4" type="video/mp4" />
+	</video>
+
+	<div class="absolute inset-0 pointer-events-none" style="background:var(--page-bg); opacity:0.75;" aria-hidden="true" />
+
+	<div
+		class="absolute inset-0 pointer-events-none"
+		aria-hidden="true"
+		style="background:radial-gradient(ellipse 80% 60% at 50% 40%, color-mix(in srgb, var(--primary) 8%, transparent) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 80% 70%, color-mix(in srgb, var(--brand-pink) 6%, transparent) 0%, transparent 60%);"
+	/>
+
+	<div
+		class="relative z-[1] min-h-screen flex flex-col md:flex-row items-center gap-10 md:gap-20 px-4 md:px-8 max-w-container mx-auto md:pt-14 pb-0 md:pb-0"
+		style="padding-top:clamp(4rem, 8vw, 6rem);"
+	>
+		<div class="flex-1 md:flex-[0_0_55%]">
+			<div class="flex items-center gap-2 mb-6">
+				<span class="inline-block w-[7px] h-[7px] rounded-full bg-primary" style="animation:pulseGlow 2s ease infinite;" aria-hidden="true"></span>
+				<span class="text-2xs font-bold uppercase tracking-wider text-primary">
+					{t("landing.hero.badge", locale)}
+				</span>
+			</div>
+
+			<h1
+				class="font-extrabold tracking-tight leading-[1.08] mb-8 text-foreground"
+				style="font-size:clamp(1.875rem, 5vw, 3.75rem);"
+			>
+				<Trans key="landing.hero.title" locale={locale} tagMap={{ "1": 'span class="gradient-text"' }} />
+			</h1>
+
+			<p
+				class="max-w-[520px] mb-10 text-foreground-secondary"
+				style="font-size:clamp(1rem, 2vw, 1.125rem);"
+			>
+				<Trans key="landing.hero.description" locale={locale} />
+			</p>
+
+			<GradientButton href={`${APP_URL}/register`}>
+				{t("landing.hero.cta", locale)}
+			</GradientButton>
+		</div>
+
+		<HeroVideoTrigger locale={locale} />
+	</div>
+</section>
+
+<script is:inline>
+	(() => {
+		const video = document.querySelector("#hero video");
+		if (!video) return;
+		const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		if (reduce) video.pause();
+	})();
+</script>

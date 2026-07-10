@@ -1,0 +1,94 @@
+---
+import type { Locale } from "../../config";
+import AppLogo from "../ui/AppLogo.astro";
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = (await import("../../i18n/t")).t;
+
+const contactLinks = [
+	{
+		key: "email",
+		label: "Email",
+		value: "contacto@cesarcuitino.cl",
+		href: "mailto:contacto@cesarcuitino.cl",
+	},
+	{
+		key: "linkedin",
+		label: "LinkedIn",
+		value: "linkedin.com/in/cesarcuitino",
+		href: "https://www.linkedin.com/in/cesarcuitino",
+	},
+	{
+		key: "wa",
+		label: "WhatsApp",
+		value: "+56 9 6436 9598",
+		href: "https://api.whatsapp.com/send/?phone=56964369598",
+		isWa: true,
+	},
+] as const;
+
+const localePrefix = locale === "es" ? "" : `/${locale}`;
+---
+
+<footer class="border-t border-border-secondary">
+	<div class="max-w-container mx-auto px-4 md:px-8 py-12 md:py-24">
+		<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+			<div class="md:col-span-5">
+				<AppLogo showVersion />
+				<div class="flex flex-col gap-2 mt-4">
+					{contactLinks.map((link) => (
+						<a
+							href={link.href}
+							class="inline-flex items-center gap-2 px-3 py-2 rounded-lg no-underline transition-colors bg-surface border border-border-secondary text-foreground hover:bg-surface-hover max-w-[260px] text-xs"
+						>
+							<span class="text-2xs shrink-0 uppercase tracking-widest text-foreground-tertiary">{link.label}</span>
+							<span class="font-semibold">{link.value}</span>
+							{"isWa" in link && link.isWa && <span class="ml-auto text-2xs font-semibold font-mono">{t("landing.footer.support", locale)}</span>}
+						</a>
+					))}
+				</div>
+			</div>
+
+			{[
+				{
+					section: t("landing.footer.product", locale),
+					links: [
+						{ label: t("landing.footer.features", locale), href: `${localePrefix}/features` },
+						{ label: t("landing.footer.changelog", locale), href: `${localePrefix}/changelog` },
+					],
+				},
+				{
+					section: t("landing.footer.legal", locale),
+					links: [
+						{ label: t("landing.footer.privacy", locale), href: `${localePrefix}/privacy` },
+						{ label: t("landing.footer.terms_of_use", locale), href: `${localePrefix}/terms` },
+					],
+				},
+			].map((col) => (
+				<div class="md:col-span-3 md:col-start-auto">
+					<p class="text-2xs font-mono uppercase tracking-widest mb-4 text-foreground-secondary">{col.section}</p>
+					<div class="flex flex-col gap-2.5">
+						{col.links.map((link) => (
+							<a href={link.href} class="text-sm no-underline transition-opacity text-foreground-secondary hover:opacity-80">
+								{link.label}
+							</a>
+						))}
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+
+	<div class="border-t border-border-secondary py-4">
+		<div class="flex items-center justify-center gap-1 text-xs flex-wrap text-foreground-tertiary">
+			<span>{t("landing.footer.made_with", locale)}</span>
+			<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="inline-block align-middle text-danger"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
+			<span>{t("landing.footer.by", locale)}</span>
+			<a href="https://cesarcuitino.cl" class="font-semibold no-underline text-foreground hover:opacity-80">César Cuitiño</a>
+		</div>
+	</div>
+</footer>

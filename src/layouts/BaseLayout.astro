@@ -1,0 +1,74 @@
+---
+import type { Locale } from "../config";
+import "../styles/globals.css";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+
+interface Props {
+	locale: Locale;
+	title?: string;
+	description?: string;
+}
+
+const { locale, title = "Estratario", description = "" } = Astro.props;
+---
+
+<!doctype html>
+<html data-theme="light" lang={locale}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="color-scheme" content="light dark" />
+		<link rel="icon" type="image/svg+xml" href="/icon.svg" />
+		<meta name="theme-color" content="#f0edff" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<script is:inline>
+			(() => {
+				const fallbackTheme = window.matchMedia?.(
+					"(prefers-color-scheme: dark)",
+				).matches
+					? "dark"
+					: "light";
+				let storedTheme = null;
+				try {
+					const raw = localStorage.getItem("theme");
+					const candidate = raw && JSON.parse(raw)?.state?.theme;
+					if (candidate === "dark" || candidate === "light")
+						storedTheme = candidate;
+				} catch (_) {}
+				const theme = storedTheme ?? fallbackTheme;
+				const root = document.documentElement;
+				const metaTheme = document.querySelector('meta[name="theme-color"]');
+				root.setAttribute("data-theme", theme);
+				const themes = {
+					dark: {
+						bg: "linear-gradient(135deg, #0f0c29, #302b63, #24243e)",
+						fg: "#ffffff",
+						muted: "rgba(255,255,255,0.16)",
+						meta: "#1a1640",
+					},
+					light: {
+						bg: "linear-gradient(135deg, #e8e4ff, #f0edff, #ede8ff)",
+						fg: "#1a1433",
+						muted: "rgba(80,60,160,0.18)",
+						meta: "#f0edff",
+					},
+				};
+				const t = themes[theme];
+				root.style.setProperty("--page-bg", t.bg);
+				root.style.setProperty("--text", t.fg);
+				root.style.setProperty("--border", t.muted);
+				metaTheme?.setAttribute("content", t.meta);
+			})();
+		</script>
+	</head>
+	<body class="app-mounted">
+		<a href="#main" class="skip-link">Skip to content</a>
+		<Header locale={locale} />
+		<main id="main" tabindex="-1">
+			<slot />
+		</main>
+		<Footer locale={locale} />
+	</body>
+</html>

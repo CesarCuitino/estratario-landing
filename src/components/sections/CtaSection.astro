@@ -1,0 +1,75 @@
+---
+import Trans from "../Trans.astro";
+import GradientButton from "../ui/GradientButton.astro";
+import type { Locale } from "../../config";
+import { APP_URL } from "../../config";
+import { t } from "../../i18n/t";
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const ctaKeys = [1, 2, 3, 4] as const;
+const features = ctaKeys.map((k) => `landing.cta.feature_${k}` as const);
+---
+
+<section class="relative px-4 md:px-8 max-w-container mx-auto pt-12 md:pt-24 pb-12 md:pb-24 scroll-fade">
+	<div
+		class="absolute pointer-events-none rounded-full"
+		style="width:clamp(250px, 40vw, 500px); height:clamp(250px, 40vw, 500px); top:20%; left:20%; background:radial-gradient(circle, var(--primary) 0%, transparent 65%); opacity:0.04;"
+		aria-hidden="true"
+	/>
+	<div
+		class="absolute pointer-events-none rounded-full"
+		style="width:clamp(300px, 50vw, 600px); height:clamp(300px, 50vw, 600px); bottom:10%; right:15%; background:radial-gradient(circle, var(--success) 0%, transparent 70%); opacity:0.03;"
+		aria-hidden="true"
+	/>
+
+	<div
+		class="w-full relative z-[2] rounded-card-lg border border-card bg-card shadow-card backdrop-blur"
+		style="padding:clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);"
+	>
+		<div class="flex flex-col items-center text-center">
+			<div class="inline-flex px-3 py-1 rounded-full mb-6 border border-primary bg-primary-soft">
+				<span class="text-2xs font-extrabold tracking-widest text-primary">
+					{t("landing.cta.badge", locale)}
+				</span>
+			</div>
+
+			<h2 class="section-title max-w-prose mb-0 mt-0">
+				<Trans key="landing.cta.title" locale={locale} tagMap={{ "1": 'span class="gradient-text"' }} />
+			</h2>
+
+			<p class="section-desc max-w-[680px] mt-4 mb-9">
+				<Trans key="landing.cta.subtitle" locale={locale} />
+			</p>
+
+			<div class="flex flex-wrap gap-4 justify-center mb-10 w-full max-w-[850px]">
+				{features.map((fkey) => (
+					<div
+						class="flex items-center gap-2 px-4 py-2.5 rounded-xl text-left bg-surface border border-border-secondary"
+						style="flex:1 1 calc(50% - 16px); max-width:100%;"
+					>
+						<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true">
+							<polyline points="20 6 9 17 4 12" />
+						</svg>
+						<span class="text-sm font-medium text-foreground">
+							<Trans key={fkey} locale={locale} />
+						</span>
+					</div>
+				))}
+			</div>
+
+			<div class="flex flex-col items-center gap-3">
+				<GradientButton href={`${APP_URL}/register`}>
+					{t("landing.cta.button", locale)}
+				</GradientButton>
+				<span class="text-2xs tracking-wide text-foreground-tertiary">
+					{t("landing.cta.small", locale)}
+				</span>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,95 @@
+---
+title: "Guía completa: Cómo construir tu Core Estratégico con IA"
+description: "Una guía paso a paso para estructurar el conocimiento de tus clientes en un Core Estratégico reutilizable. Aprende el flujo de 4 fases: estructurar, extraer, validar e integrar."
+pubDate: 2026-07-01
+tags: ["estrategia", "ia", "core-strategico", "guia"]
+locale: "es"
+draft: false
+---
+
+import GradientButton from "../../components/ui/GradientButton.astro";
+
+## ¿Qué es el Core Estratégico?
+
+El **Core Estratégico** es una fuente única de verdad que consolida todo el conocimiento de un cliente en una matriz estructurada y reutilizable. No es un documento más en tu carpeta de Google Drive: es un *activo vivo* que alimenta cada interacción con IA.
+
+> El problema no es la IA, es la **información desordenada** que le das. Un modelo de lenguaje solo es tan bueno como el contexto que recibe.
+
+### Por qué lo necesitas
+
+Imagina este escenario: llega un nuevo cliente. En el modelo tradicional, abres un chat nuevo y empiezas a explicar tu negocio desde cero. Luego subes PDFs dispersos. La IA procesa datos contradictorios y te da respuestas genéricas.
+
+Con un Core Estratégico, todo ese conocimiento ya está estructurado, validado y listo para inyectar en cualquier prompt.
+
+## El flujo de 4 fases
+
+El sistema sigue un ciclo iterativo de cuatro fases para cada documento que añades:
+
+1. **Estructurar** — Completa marcos estratégicos guiados por preguntas contextualizadas.
+2. **Extraer** — El sistema analiza las respuestas y consolida automáticamente los insights.
+3. **Validar** — Evalúa la consistencia entre documentos antes de consolidarlos.
+4. **Integrar** — Los insights validados se integran en tu Core, listos para usar.
+
+### Fase 1: Estructurar
+
+Cuando añades un documento (por ejemplo, un *Buyer Persona*), el sistema te hace preguntas personalizadas según tu rubro y etapa de negocio. No es un formulario genérico: la IA adapta cada pregunta al contexto.
+
+#### Ejemplo de pregunta guiada
+
+> "¿Qué canal de adquisición genera el mayor CAC para tu cliente? Considera tanto paid como orgánico."
+
+La plataforma sugiere respuestas basadas en tu industria, pero **tú siempre tienes la última palabra**. Co-creación, no magia negra.
+
+### Fase 2: Extraer
+
+Una vez completado el documento, el sistema extrae insights clave. Cada insight es una unidad semántica que se integrará al Core.
+
+El código detrás de la extracción se ve así (simplificado):
+
+```typescript
+interface Insight {
+  id: string;
+  category: "audience" | "value" | "channel" | "metric";
+  content: string;
+  source: string;        // documento de origen
+  confidence: number;    // 0-1, validación cruzada
+  validated: boolean;
+}
+```
+
+### Fase 3: Validar
+
+El sistema evalúa la consistencia entre documentos. Si el Buyer Persona dice que el cliente es "B2B" pero el Value Proposition Canvas menciona "consumidores finales", el sistema lo marca.
+
+| Documento A | Documento B | Estado |
+|---|---|---|
+| Audiencia: B2B | Audiencia: B2C | ⚠️ Conflicto |
+| Canal: LinkedIn | Canal: TikTok | ⚠️ Conflicto |
+| Métrica: CAC | Métrica: LTV | ✅ Compatible |
+
+### Fase 4: Integrar
+
+Los insights validados se integran al Core Estratégico. A partir de este momento, están disponibles para inyectar en cualquier prompt o flujo de ejecución.
+
+## Inyección contextual
+
+El Core se puede exportar como un bloque de contexto estructurado para cualquier IA:
+
+```text
+[CORE ESTRATÉGICO — Cliente: Acme Corp]
+- Audiencia: B2B,决策者 CMO, 35-50 años
+- Propuesta de valor: "Reduce tu CAC 40% con datos validados"
+- Canales principales: LinkedIn Ads, Email nurture
+- Métricas clave: CAC $340, LTV $4.200, Churn 3.2%
+- Etapa: Growth
+```
+
+Este bloque se pega directamente en ChatGPT, Claude, o Gemini. La IA ahora tiene contexto preciso y validado.
+
+---
+
+## Conclusión
+
+El Core Estratégico no es un documento: es **infraestructura**. Es la diferencia entre improvisar en cada chat de IA y tener un sistema escalable que produce resultados consistentes.
+
+<GradientButton href="https://app.example.com/register">Comienza a construir tu Core</GradientButton>

@@ -1,0 +1,124 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { t } from "../../i18n/t";
+
+const locale = "en" as const;
+const email = "contacto@cesarcuitino.cl";
+
+const sections: {
+	titleKey: string;
+	content: { type: "p" | "ul"; key?: string; items?: { parts: string[] }[] }[];
+}[] = [
+	{
+		titleKey: "terms.s1_title", content: [
+			{ type: "p", key: "terms.s1_p1" },
+			{ type: "p", key: "terms.s1_p2" },
+		],
+	},
+	{
+		titleKey: "terms.s2_title", content: [
+			{ type: "p", key: "terms.s2_p1" },
+			{ type: "p", key: "terms.s2_alpha_label" },
+			{ type: "p", key: "terms.s2_alpha_desc" },
+		],
+	},
+	{
+		titleKey: "terms.s3_title", content: [
+			{ type: "p", key: "terms.s3_p1" },
+			{ type: "ul", items: [{ parts: [t("terms.s3_item1", locale)] }, { parts: [t("terms.s3_item2", locale)] }, { parts: [t("terms.s3_item3", locale)] }] },
+		],
+	},
+	{
+		titleKey: "terms.s4_title", content: [
+			{ type: "p", key: "terms.s4_p1" },
+			{ type: "ul", items: [{ parts: [t("terms.s4_item1", locale)] }, { parts: [t("terms.s4_item2", locale)] }, { parts: [t("terms.s4_item3", locale)] }, { parts: [t("terms.s4_item4", locale)] }] },
+		],
+	},
+	{ titleKey: "terms.s5_title", content: [{ type: "p", key: "terms.s5_p1" }] },
+	{ titleKey: "terms.s6_title", content: [{ type: "p", key: "terms.s6_p1" }] },
+	{
+		titleKey: "terms.s7_title", content: [
+			{ type: "p", key: "terms.s7_p1" },
+			{ type: "p", key: "terms.s7_p2" },
+		],
+	},
+	{
+		titleKey: "terms.s8_title", content: [
+			{ type: "p", key: "terms.s8_p1" },
+			{
+				type: "ul",
+				items: [
+					{ parts: [t("terms.s8_item1_a", locale), t("terms.s8_item1_b", locale), t("terms.s8_item1_c", locale)] },
+					{ parts: [t("terms.s8_item2_a", locale), t("terms.s8_item2_b", locale), t("terms.s8_item2_c", locale)] },
+					{ parts: [t("terms.s8_item3", locale)] },
+					{ parts: [t("terms.s8_item4", locale)] },
+					{ parts: [t("terms.s8_item5", locale)] },
+				],
+			},
+		],
+	},
+	{
+		titleKey: "terms.s9_title", content: [
+			{ type: "p", key: "terms.s9_p1" },
+			{ type: "p", key: "terms.s9_p2" },
+		],
+	},
+	{ titleKey: "terms.s10_title", content: [{ type: "p", key: "terms.s10_p1" }] },
+	{ titleKey: "terms.s11_title", content: [{ type: "p", key: "terms.s11_p1" }] },
+];
+---
+
+<BaseLayout
+	locale={locale}
+	title={t("terms.title", locale) + " — Estratario"}
+	description={t("terms.title", locale)}
+>
+	<div class="px-4 md:px-8 max-w-prose mx-auto pt-24 pb-24">
+		<h1 class="text-3xl font-bold mb-2 text-foreground-heading">
+			{t("terms.title", locale)}
+		</h1>
+		<p class="text-sm mb-12 text-foreground-tertiary">
+			{t("terms.last_updated", locale)}
+		</p>
+
+		<div class="space-y-10">
+			{sections.map((section) => (
+				<section>
+					<h2 class="text-xl font-bold mb-4 text-foreground-heading">
+						{t(section.titleKey, locale)}
+					</h2>
+					<div class="space-y-3 text-foreground-secondary">
+						{section.content.map((c) =>
+							c.type === "ul" ? (
+								<ul class="list-disc pl-5 space-y-2">
+									{c.items!.map((item) => (
+										<li>{item.parts.join(" ")}</li>
+									))}
+								</ul>
+							) : c.key === "terms.s8_item1_a" ? null : (
+								<p class="leading-relaxed">
+									{t(c.key!, locale)}
+									{c.key === "terms.s9_p1" ? (
+										<>
+											{" "}
+											<a href="/en/privacy" class="underline text-foreground">
+												{t("terms.s9_link", locale)}
+											</a>
+											.
+										</>
+									) : ""}
+									{c.key === "terms.s11_p1" ? (
+										<>
+											{" "}
+											<a href={`mailto:${email}`} class="underline text-foreground">{email}</a>
+										</>
+									) : ""}
+								</p>
+							),
+						)}
+					</div>
+				</section>
+			))}
+		</div>
+	</div>
+</BaseLayout>

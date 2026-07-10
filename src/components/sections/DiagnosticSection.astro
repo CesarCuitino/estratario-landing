@@ -1,0 +1,75 @@
+---
+import DiagnosticColumn from "./DiagnosticColumn.astro";
+import { FileSearchIcon, BranchIcon, RobotIcon, LinkIcon, DatabaseIcon, RocketIcon } from "../ui/Icons";
+import type { Locale } from "../../config";
+import { t } from "../../i18n/t";
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const LEFT_STEPS = [
+	{ titleKey: "landing.diagnosis.left.step1_title", descKey: "landing.diagnosis.left.step1_desc", iconFn: FileSearchIcon },
+	{ titleKey: "landing.diagnosis.left.step2_title", descKey: "landing.diagnosis.left.step2_desc", iconFn: BranchIcon },
+	{ titleKey: "landing.diagnosis.left.step3_title", descKey: "landing.diagnosis.left.step3_desc", iconFn: RobotIcon },
+];
+
+const RIGHT_STEPS = [
+	{ titleKey: "landing.diagnosis.right.step1_title", descKey: "landing.diagnosis.right.step1_desc", iconFn: LinkIcon },
+	{ titleKey: "landing.diagnosis.right.step2_title", descKey: "landing.diagnosis.right.step2_desc", iconFn: DatabaseIcon },
+	{ titleKey: "landing.diagnosis.right.step3_title", descKey: "landing.diagnosis.right.step3_desc", iconFn: RocketIcon },
+];
+---
+
+<section class="relative px-4 md:px-8 max-w-container mx-auto pt-12 md:pt-24 pb-12 md:pb-24 scroll-fade">
+	<!-- Background glow -->
+	<div class="hidden md:block absolute w-[400px] h-[400px] pointer-events-none rounded-full" style="background:var(--brand-gradient); opacity:0.06; filter:blur(100px); top:40%; right:5%;" aria-hidden="true" />
+
+	<div class="flex flex-col lg:flex-row gap-14 lg:gap-20 mx-auto">
+		<!-- Left: Sticky header panel -->
+		<div class="lg:sticky lg:top-24 lg:self-start lg:w-[480px] shrink-0">
+			<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full mb-5 backdrop-blur border border-primary bg-primary-soft">
+				<span class="text-2xs font-bold uppercase tracking-widest text-primary">
+					{t("landing.diagnosis.badge", locale)}
+				</span>
+			</div>
+
+			<h2 class="panel-title mb-4">
+				<span set:html={t("landing.diagnosis.title", locale).replace(/<1>(.*?)<\/1>/g, '<span class="gradient-text">$1</span>')} />
+			</h2>
+
+			<h3 class="panel-subtitle mb-3">
+				<span set:html={t("landing.diagnosis.subtitle", locale).replace(/<1>(.*?)<\/1>/g, '<strong>$1</strong>')} />
+			</h3>
+
+			<p class="panel-desc">
+				{t("landing.diagnosis.description", locale)}
+			</p>
+		</div>
+
+		<!-- Right: Stacked narrative cards -->
+		<div class="flex-1 flex flex-col gap-12 lg:gap-16">
+			<DiagnosticColumn
+				locale={locale}
+				variant="danger"
+				steps={LEFT_STEPS}
+				labelKey="landing.diagnosis.left.label"
+				statusKey="landing.diagnosis.left.status"
+				resultLabelKey="landing.diagnosis.left.result_label"
+				resultKey="landing.diagnosis.left.result"
+			/>
+			<DiagnosticColumn
+				locale={locale}
+				variant="premium"
+				badge={t("landing.diagnosis.badge_recommended", locale)}
+				steps={RIGHT_STEPS}
+				labelKey="landing.diagnosis.right.label"
+				statusKey="landing.diagnosis.right.status"
+				resultLabelKey="landing.diagnosis.right.result_label"
+				resultKey="landing.diagnosis.right.result"
+			/>
+		</div>
+	</div>
+</section>

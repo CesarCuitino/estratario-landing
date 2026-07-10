@@ -1,0 +1,28 @@
+---
+import { APP_NAME } from "../../config";
+
+interface Props {
+	showVersion?: boolean;
+}
+
+const { showVersion = false } = Astro.props;
+---
+
+<div class="inline-flex items-center gap-2">
+	<div
+		class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-brand-gradient"
+		style="box-shadow: var(--brand-gradient-shadow);"
+	>
+		<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+			<path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+		</svg>
+	</div>
+	<span class="font-bold text-base tracking-tight bg-brand-gradient bg-clip-text text-transparent" style="-webkit-background-clip:text; -webkit-text-fill-color:transparent;">
+		{APP_NAME}
+	</span>
+	{showVersion && (
+		<span class="text-2xs font-bold font-mono tracking-wider px-1.5 py-0.5 rounded bg-surface border border-border-secondary text-foreground-secondary">
+			Alpha
+		</span>
+	)}
+</div>

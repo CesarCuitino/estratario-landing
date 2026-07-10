@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/sections/HeroSection.astro";
+import DiagnosticSection from "../components/sections/DiagnosticSection.astro";
+import HowItWorksSection from "../components/sections/HowItWorksSection.astro";
+import CtaSection from "../components/sections/CtaSection.astro";
+import type { Locale } from "../config";
+import { t } from "../i18n/t";
+
+const locale: Locale = "es";
+const title = t("landing.hero.badge", locale) + " — Estratario";
+const raw = t("landing.hero.description", locale);
+const description = raw.replace(/<[^>]*>/g, "");
+---
+
+<BaseLayout locale={locale} title={title} description={description}>
+	<script is:inline>
+		if (!location.pathname.startsWith("/en")) {
+			const lang = navigator.language || navigator.userLanguage || "";
+			if (lang.startsWith("en")) {
+				location.replace("/en/");
+			}
+		}
+	</script>
+
+	<HeroSection locale={locale} />
+
+	<DiagnosticSection locale={locale} />
+
+	<HowItWorksSection locale={locale} />
+	<CtaSection locale={locale} />
+</BaseLayout>
+
+<script>
+	import { initLandingMotion } from "../scripts/landing-motion";
+	initLandingMotion();
+</script>
+

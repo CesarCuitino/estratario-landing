@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import type { Locale } from "../../config";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+	const blogEntries = (await getCollection("blog")) as CollectionEntry<"blog">[];
+	const esEntries = blogEntries.filter(
+		(entry) => !entry.data.draft && entry.data.locale === "es",
+	);
+	return esEntries.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout
+	locale={entry.data.locale as Locale}
+	title={`${entry.data.title} — Estratario`}
+	description={entry.data.description}
+>
+	<article class="px-4 md:px-8 max-w-prose mx-auto pt-24 pb-24 prose prose-lg">
+		<time class="text-sm text-foreground-tertiary">{entry.data.pubDate.toLocaleDateString()}</time>
+		<h1 class="text-3xl font-bold mt-2 mb-8 text-foreground-heading">{entry.data.title}</h1>
+		<Content />
+	</article>
+</BaseLayout>

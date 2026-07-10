@@ -1,0 +1,95 @@
+---
+title: "Complete Guide: How to Build Your Strategic Core with AI"
+description: "A step-by-step guide to structuring your clients' knowledge into a reusable Strategic Core. Learn the 4-phase flow: structure, extract, validate, and integrate."
+pubDate: 2026-07-01
+tags: ["strategy", "ai", "strategic-core", "guide"]
+locale: "en"
+draft: false
+---
+
+import GradientButton from "../../components/ui/GradientButton.astro";
+
+## What is the Strategic Core?
+
+The **Strategic Core** is a single source of truth that consolidates all client knowledge into a structured, reusable matrix. It's not another document in your Google Drive folder: it's a *living asset* that feeds every AI interaction.
+
+> The problem isn't the AI, it's the **disorganized information** you give it. A language model is only as good as the context it receives.
+
+### Why you need it
+
+Imagine this scenario: a new client arrives. In the traditional model, you open a new chat and start explaining your business from scratch. Then you upload scattered PDFs. The AI processes contradictory data and gives you generic responses.
+
+With a Strategic Core, all that knowledge is already structured, validated, and ready to inject into any prompt.
+
+## The 4-Phase Flow
+
+The system follows an iterative four-phase cycle for each document you add:
+
+1. **Structure** — Complete strategic frameworks guided by contextualized questions.
+2. **Extract** — The system analyzes responses and automatically consolidates insights.
+3. **Validate** — Evaluates cross-document consistency before consolidating.
+4. **Integrate** — Validated insights are integrated into your Core, ready to use.
+
+### Phase 1: Structure
+
+When you add a document (e.g., a *Buyer Persona*), the system asks you personalized questions based on your industry and business stage. It's not a generic form: the AI adapts each question to the context.
+
+#### Example guided question
+
+> "Which acquisition channel generates the highest CAC for your client? Consider both paid and organic."
+
+The platform suggests responses based on your industry, but **you always have the final say**. Co-creation, not black magic.
+
+### Phase 2: Extract
+
+Once the document is completed, the system extracts key insights. Each insight is a semantic unit that will be integrated into the Core.
+
+The code behind the extraction looks like this (simplified):
+
+```typescript
+interface Insight {
+  id: string;
+  category: "audience" | "value" | "channel" | "metric";
+  content: string;
+  source: string;        // origin document
+  confidence: number;    // 0-1, cross-validation
+  validated: boolean;
+}
+```
+
+### Phase 3: Validate
+
+The system evaluates consistency between documents. If the Buyer Persona says the client is "B2B" but the Value Proposition Canvas mentions "end consumers", the system flags it.
+
+| Document A | Document B | Status |
+|---|---|---|
+| Audience: B2B | Audience: B2C | ⚠️ Conflict |
+| Channel: LinkedIn | Channel: TikTok | ⚠️ Conflict |
+| Metric: CAC | Metric: LTV | ✅ Compatible |
+
+### Phase 4: Integrate
+
+Validated insights are integrated into the Strategic Core. From this point on, they're available to inject into any prompt or execution flow.
+
+## Context Injection
+
+The Core can be exported as a structured context block for any AI:
+
+```text
+[STRATEGIC CORE — Client: Acme Corp]
+- Audience: B2B, decision-maker CMO, 35-50 years
+- Value proposition: "Cut your CAC 40% with validated data"
+- Primary channels: LinkedIn Ads, Email nurture
+- Key metrics: CAC $340, LTV $4,200, Churn 3.2%
+- Stage: Growth
+```
+
+This block can be pasted directly into ChatGPT, Claude, or Gemini. The AI now has precise, validated context.
+
+---
+
+## Conclusion
+
+The Strategic Core isn't a document: it's **infrastructure**. It's the difference between improvising in every AI chat and having a scalable system that produces consistent results.
+
+<GradientButton href="https://app.example.com/register">Start building your Core</GradientButton>
