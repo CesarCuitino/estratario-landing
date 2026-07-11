@@ -126,6 +126,7 @@
 	},
 	"privacy": {
 		"title": "Privacy Policy",
+		"description": "Learn how Estratario collects, uses, and protects your personal data. Full transparency on your privacy in our AI-powered marketing platform.",
 		"last_updated": "Last updated: May 2026",
 		"s1_title": "1. Data controller",
 		"s1_p1": "César Cuitiño, hereinafter «the controller», is responsible for the processing of personal data collected through this application.",
@@ -160,6 +161,7 @@
 	},
 	"terms": {
 		"title": "Terms and Conditions",
+		"description": "The terms governing your use of Estratario. Understand your rights and obligations when using our AI-powered marketing strategy platform.",
 		"last_updated": "Last updated: May 2026",
 		"s1_title": "1. Acceptance of terms",
 		"s1_p1": "By accessing and using this application, you agree to comply with these Terms and Conditions. If you do not agree with any part, you must not use the application.",
@@ -208,7 +210,7 @@
 	},
 	"changelog": {
 		"title": "Changelog",
-		"subtitle": "Platform changes and updates history.",
+		"subtitle": "Follow the latest updates, new features, and improvements to Estratario — the platform that centralizes your marketing strategy with AI.",
 		"v1_version": "v0.8.0",
 		"v1_date": "Coming soon",
 		"v1_tag": "Pre-release",

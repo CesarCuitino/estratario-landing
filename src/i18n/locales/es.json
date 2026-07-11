@@ -108,7 +108,7 @@
 	},
 	"features": {
 		"title": "Características",
-		"subtitle": "Estratario convierte el pensamiento estratégico en un sistema estructurado, persistente y reutilizable. Estrategia con IA, pero siempre con tu criterio al mando.",
+		"subtitle": "Estratario convierte el pensamiento estratégico en un sistema estructurado, persistente y reutilizable. Estrategia con IA, siempre con tu criterio al mando.",
 		"item1_title": "Documentos estratégicos",
 		"item1_desc": "Completa frameworks como Buyer Persona, Value Proposition Canvas y Empathy Map con la ayuda de IA. La plataforma selecciona automáticamente los documentos relevantes según la etapa de tu negocio y la iniciativa que quieres ejecutar.",
 		"item2_title": "Insights reutilizables",
@@ -126,6 +126,7 @@
 	},
 	"privacy": {
 		"title": "Política de Privacidad",
+		"description": "Conoce cómo Estratario recopila, usa y protege tus datos personales. Transparencia total sobre tu privacidad en nuestra plataforma de marketing con IA.",
 		"last_updated": "Última actualización: mayo 2026",
 		"s1_title": "1. Responsable del tratamiento",
 		"s1_p1": "César Cuitiño, en adelante «el titular», es el responsable del tratamiento de los datos personales recabados a través de esta aplicación.",
@@ -160,6 +161,7 @@
 	},
 	"terms": {
 		"title": "Términos y Condiciones de Uso",
+		"description": "Los términos que rigen el uso de Estratario. Infórmate sobre tus derechos y obligaciones al usar nuestra plataforma de estrategia de marketing con IA.",
 		"last_updated": "Última actualización: mayo 2026",
 		"s1_title": "1. Aceptación de los términos",
 		"s1_p1": "Al acceder y utilizar esta aplicación, aceptas cumplir con estos Términos y Condiciones. Si no estás de acuerdo con alguna parte, no debes usar la aplicación.",
@@ -208,7 +210,7 @@
 	},
 	"changelog": {
 		"title": "Changelog",
-		"subtitle": "Historial de cambios y novedades de la plataforma.",
+		"subtitle": "Sigue las últimas actualizaciones, nuevas funcionalidades y mejoras de Estratario, la plataforma que centraliza tu estrategia de marketing con IA.",
 		"v1_version": "v0.8.0",
 		"v1_date": "Próximamente",
 		"v1_tag": "Pre-release",
