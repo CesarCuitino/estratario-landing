@@ -62,16 +62,16 @@ const localePrefix = locale === "es" ? "" : `/${locale}`;
 				{
 					section: t("landing.footer.product", locale),
 					links: [
-						{ label: t("landing.footer.features", locale), href: `${localePrefix}/features` },
-						{ label: t("landing.footer.blog", locale), href: `${localePrefix}/blog` },
-						{ label: t("landing.footer.changelog", locale), href: `${localePrefix}/changelog` },
+						{ label: t("landing.footer.features", locale), href: `${localePrefix}/features/` },
+						{ label: t("landing.footer.blog", locale), href: `${localePrefix}/blog/` },
+						{ label: t("landing.footer.changelog", locale), href: `${localePrefix}/changelog/` },
 					],
 				},
 				{
 					section: t("landing.footer.legal", locale),
 					links: [
-						{ label: t("landing.footer.privacy", locale), href: `${localePrefix}/privacy` },
-						{ label: t("landing.footer.terms_of_use", locale), href: `${localePrefix}/terms` },
+						{ label: t("landing.footer.privacy", locale), href: `${localePrefix}/privacy/` },
+						{ label: t("landing.footer.terms_of_use", locale), href: `${localePrefix}/terms/` },
 					],
 				},
 			].map((col) => (

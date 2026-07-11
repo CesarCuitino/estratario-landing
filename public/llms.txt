@@ -8,24 +8,24 @@ La plataforma está en fase v0.8.0. Este sitio web es el sitio oficial del produ
 
 - [Landing — ES](https://estratario.com/): Página principal en español con hero, diagnóstico, cómo funciona, blog y CTA
 - [Landing — EN](https://estratario.com/en/): Página principal en inglés
-- [Blog — ES](https://estratario.com/blog): Blog con artículos sobre estrategia de marketing y Core Estratégico
-- [Blog — EN](https://estratario.com/en/blog): Blog with articles about marketing strategy and Strategic Core
-- [Features — ES](https://estratario.com/features): Características del producto en español
-- [Features — EN](https://estratario.com/en/features): Product features in English
-- [Changelog — ES](https://estratario.com/changelog): Historial de versiones y cambios
-- [Changelog — EN](https://estratario.com/en/changelog): Version history and release notes
+- [Blog — ES](https://estratario.com/blog/): Blog con artículos sobre estrategia de marketing y Core Estratégico
+- [Blog — EN](https://estratario.com/en/blog/): Blog with articles about marketing strategy and Strategic Core
+- [Features — ES](https://estratario.com/features/): Características del producto en español
+- [Features — EN](https://estratario.com/en/features/): Product features in English
+- [Changelog — ES](https://estratario.com/changelog/): Historial de versiones y cambios
+- [Changelog — EN](https://estratario.com/en/changelog/): Version history and release notes
 
 ## Legal
 
-- [Privacy Policy — ES](https://estratario.com/privacy): Política de privacidad
-- [Privacy Policy — EN](https://estratario.com/en/privacy): Privacy policy
-- [Terms & Conditions — ES](https://estratario.com/terms): Términos y condiciones de uso
-- [Terms & Conditions — EN](https://estratario.com/en/terms): Terms and conditions
+- [Privacy Policy — ES](https://estratario.com/privacy/): Política de privacidad
+- [Privacy Policy — EN](https://estratario.com/en/privacy/): Privacy policy
+- [Terms & Conditions — ES](https://estratario.com/terms/): Términos y condiciones de uso
+- [Terms & Conditions — EN](https://estratario.com/en/terms/): Terms and conditions
 
 ## Blog
 
-- [Guía: Cómo construir un Core Estratégico — ES](https://estratario.com/blog/guia-core-estrategico): Guía completa para construir un Core Estratégico como consultor de marketing
-- [Strategic Core Guide — EN](https://estratario.com/en/blog/strategic-core-guide): Complete guide to building a Strategic Core as a marketing consultant
+- [Guía: Cómo construir un Core Estratégico — ES](https://estratario.com/blog/guia-core-estrategico/): Guía completa para construir un Core Estratégico como consultor de marketing
+- [Strategic Core Guide — EN](https://estratario.com/en/blog/strategic-core-guide/): Complete guide to building a Strategic Core as a marketing consultant
 
 ## Optional
 

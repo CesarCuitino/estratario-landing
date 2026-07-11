@@ -33,7 +33,7 @@ const localePrefix = locale === "es" ? "" : `/${locale}`;
 				const slug = post.slug;
 				return (
 					<a
-						href={`${localePrefix}/blog/${slug}`}
+						href={`${localePrefix}/blog/${slug}/`}
 						class="group flex-[1_1_380px] max-w-full p-6 rounded-2xl border border-border-secondary bg-surface no-underline scroll-fade transition-all duration-300 hover:border-primary hover:-translate-y-0.5 hover:shadow-lg"
 						style="opacity:0;transform:translateY(20px);"
 					>
@@ -60,7 +60,7 @@ const localePrefix = locale === "es" ? "" : `/${locale}`;
 
 	<div class="text-center">
 		<a
-			href={`${localePrefix}/blog`}
+			href={`${localePrefix}/blog/`}
 			class="inline-flex items-center gap-2 text-sm font-semibold text-primary no-underline hover:opacity-80 transition-opacity"
 		>
 			{t("landing.blog.view_all", locale)}

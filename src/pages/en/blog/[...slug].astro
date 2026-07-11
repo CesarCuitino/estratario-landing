@@ -19,13 +19,13 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 
 const siteUrl = "https://estratario.com";
-const canonical = `${siteUrl}/en/blog/${entry.slug}`;
+const canonical = `${siteUrl}/en/blog/${entry.slug}/`;
 const description = entry.data.description;
 
 // Map EN slug to ES slug for hreflang
 const esSlug = entry.slug === "strategic-core-guide" ? "guia-core-estrategico" : entry.slug;
 const alternates = [
-	{ lang: "es", url: `${siteUrl}/blog/${esSlug}` },
+	{ lang: "es", url: `${siteUrl}/blog/${esSlug}/` },
 ];
 
 const articleSchema = {

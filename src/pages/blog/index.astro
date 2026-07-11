@@ -5,7 +5,7 @@ import type { CollectionEntry } from "astro:content";
 
 const locale = "es" as const;
 const siteUrl = "https://estratario.com";
-const canonical = `${siteUrl}/blog`;
+const canonical = `${siteUrl}/blog/`;
 const title = "Blog — Estratario";
 const description = "Artículos sobre estrategia de marketing, Core Estratégico, IA aplicada a marketing y mejores prácticas para consultores.";
 
@@ -15,7 +15,7 @@ const posts = allPosts
 	.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 const alternates = [
-	{ lang: "en", url: `${siteUrl}/en/blog` },
+	{ lang: "en", url: `${siteUrl}/en/blog/` },
 ];
 ---
 
@@ -28,7 +28,7 @@ const alternates = [
 			<ul class="space-y-8">
 				{posts.map((post) => (
 					<li>
-						<a href={`/blog/${post.slug}`} class="block no-underline p-6 rounded-xl bg-card border border-card transition-shadow hover:shadow-card">
+						<a href={`/blog/${post.slug}/`} class="block no-underline p-6 rounded-xl bg-card border border-card transition-shadow hover:shadow-card">
 							<h2 class="text-xl font-bold mb-2 text-foreground">{post.data.title}</h2>
 							<p class="text-sm text-foreground-secondary">{post.data.description}</p>
 							<time class="text-2xs text-foreground-tertiary">{post.data.pubDate.toLocaleDateString()}</time>

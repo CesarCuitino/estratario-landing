@@ -5,12 +5,12 @@ import es from "../../i18n/locales/es.json";
 
 const locale = "es" as const;
 const siteUrl = "https://estratario.com";
-const canonical = `${siteUrl}/changelog`;
+const canonical = `${siteUrl}/changelog/`;
 const title = `${t("changelog.title", locale)} — Estratario`;
 const description = t("changelog.subtitle", locale);
 
 const alternates = [
-	{ lang: "en", url: `${siteUrl}/en/changelog` },
+	{ lang: "en", url: `${siteUrl}/en/changelog/` },
 ];
 
 type Changes = string[];
