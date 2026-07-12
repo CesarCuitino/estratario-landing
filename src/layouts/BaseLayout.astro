@@ -64,7 +64,7 @@ const pageTitle = title.includes("—") ? title : `${title} — Estratario`;
 			<link rel="alternate" hreflang={alt.lang} href={alt.url} />
 		))}
 		<link rel="alternate" hreflang={locale} href={canonical || siteUrl} />
-		<link rel="alternate" hreflang="x-default" href={siteUrl} />
+		{canonical === siteUrl && <link rel="alternate" hreflang="x-default" href={siteUrl} />}
 
 		<!-- Open Graph -->
 		<meta property="og:type" content={ogType} />
